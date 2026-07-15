@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oreka Gıda</title>
+    <!-- Favicon -->
+    <link rel="icon" href="orekalogo.png" type="image/png">
+    <link rel="stylesheet" href="oreka.css">
+</head>
+<body>
+
+    <!-- Navigasyon -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#baslangic" class="logo">
+                <img src="orekalogo.png" alt="Oreka Gıda Logo" class="logo-img">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#neden-oreka">Neden Oreka?</a></li>
+                <li><a href="#referanslar">Referanslar</a></li>
+                <li><a href="#pazarlama">Ürünlerimiz</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modern ve Etkileşimli Carousel Alanı -->
+    <header class="hero" id="baslangic">
+        <div class="hero-slides">
+            
+            <!-- 1. Kuru Bakliyat -->
+            <div class="slide active">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/bakliyat-ezremove.png');"></div>
+                <div class="slide-content">
+                    <h1>OREKA GIDA</h1>
+                    <h2>KURU BAKLİYAT</h2>
+                    <p>En taze ve kaliteli bakliyat ürünleri mutfağınıza geliyor.</p>
+                    <a href="#hakkimizda" class="btn">Bizi Tanıyın</a>
+                </div>
+            </div>
+
+            <!-- 2. Şarküteri -->
+            <div class="slide">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/sarküteri.png');"></div>
+                <div class="slide-content">
+                    <h1>OREKA GIDA</h1>
+                    <h2>ŞARKÜTERİ</h2>
+                    <p>Özenle seçilmiş, yöresel ve dünya lezzetleri.</p>
+                    <a href="#hakkimizda" class="btn">Bizi Tanıyın</a>
+                </div>
+            </div>
+
+            <!-- 3. Donuk Ürünler -->
+            <div class="slide">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/donuk.png');"></div>
+                <div class="slide-content">
+                    <h1>OREKA GIDA</h1>
+                    <h2>DONUK ÜRÜNLER</h2>
+                    <p>-18°C frigo araçlarımızla ilk günkü tazeliğinde teslimat.</p>
+                    <a href="#hakkimizda" class="btn">Bizi Tanıyın</a>
+                </div>
+            </div>
+
+            <!-- 4. Ambalajlı Ürünler -->
+            <div class="slide">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/ambalajli.png');"></div>
+                <div class="slide-content">
+                    <h1>OREKA GIDA</h1>
+                    <h2>AMBALAJLI ÜRÜNLER</h2>
+                    <p>Standart ürün garantisiyle seçkin markalar bir arada.</p>
+                    <a href="#hakkimizda" class="btn">Bizi Tanıyın</a>
+                </div>
+            </div>
+
+            <!-- 5. Temizlik Malzemeleri -->
+            <div class="slide">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/temizlik.png');"></div>
+                <div class="slide-content">
+                    <h1>OREKA GIDA</h1>
+                    <h2>TEMİZLİK MALZEMELERİ</h2>
+                    <p>İşletmeniz için profesyonel ve güvenilir hijyen çözümleri.</p>
+                    <a href="#hakkimizda" class="btn">Bizi Tanıyın</a>
+                </div>
+            </div>
+
+            <!-- 6. Sebze ve Meyve -->
+            <div class="slide">
+                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/sebze.png');"></div>
+                <div class="slide-content">
+                    <h1>OREKA GIDA</h1>
+                    <h2>SEBZE VE MEYVE</h2>
+                    <p>Tarladan mutfağınıza en doğal haliyle tam zamanında ulaşır.</p>
+                    <a href="#hakkimizda" class="btn">Bizi Tanıyın</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Navigasyon Noktaları -->
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+            <span class="dot" data-slide="5"></span>
+        </div>
+    </header>
+
+    <!-- Hakkımızda Bölümü -->
+    <section id="hakkimizda" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Hakkımızda</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Kuruluş ve Sektörel Deneyim</h3>
+                    <p>1980'li yıllarda ticaret hayatına adım atan Oreka Gıda, gıda tedarik sektöründe kalite, güven ve hızlı hizmet anlayışıyla büyümeye devam etmektedir. Zırhlı Yapı Tekstil Turizm Destek Hizmetleri ve Petrol Ürünleri Sanayi ve Ticaret Ltd. Şti. bünyesinde faaliyet gösteren marka, oteller, restoranlar, kafeler ve catering firmalarına güvenilir ürün tedariği sağlamaktadır.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Lojistik Altyapımız ve Depolama Sistemlerimiz</h3>
+                    <p>Oreka Gıda, modern lojistik ve depolama sistemleriyle ürünlerini hijyenik ve güvenilir koşullarda müşterilerine ulaştırmaktadır.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Ürün Kalitemiz ve Müşteri Memnuniyeti</h3>
+                    <ul>
+                        <li>Tüm ürünler kalite kontrol testlerinden geçer.</li>
+                        <li>Son tüketim tarihi yaklaşan veya hasarlı ürünler stoklarımızda bulunmaz.</li>
+                        <li>Hızlı ve güvenli teslimat garantisi sunuyoruz.</li>
+                        <li>Müşterilerimize rekabetçi fiyatlarla üstün kalite sağlıyoruz.</li>
+                    </ul>
+                </div>
+                <div class="about-card">
+                    <h3>Yeni Nesil</h3>
+                    <p>OrekaGıda olarak Araçlarımız Frigofrikli olup dondurulmuş ürünlerinizi ilk günkü tazeliği ile sizlere teslim ediyoruz. Başarımızın temeli elbette siz değerli müşterilerimiz için her zaman aktif olarak çalışan ekip arkadaşlarımızdır. Oldukça geniş ürün yelpazesi ile sizlere en kaliteli ürünleri en uygun fiyata veriyoruz, ambalajları yıpranmış, ezik, paslı raf ömrü 3 te 1 i kalan ürünleri kesinlikle teslim etmiyoruz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neden Oreka Bölümü -->
+    <section id="neden-oreka" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title">Neden Oreka?</h2>
+            <p class="text-center subtitle">Oreka ile kafanız her zaman rahat!</p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>1. Tedarik Zinciri ve Lojistik Gücü</h3>
+                    <p>Operasyonel gücümüzü pazarlamamızın en büyük kozu olarak görüyoruz.</p>
+                    <ul>
+                        <li><strong>Soğuk Zincir Yönetimi:</strong> Ürünlerimizi, tazeliğinden ve besin değerinden ödün vermeden, +4°C ve -18°C iklimlendirmeli araç filomuzla kapınıza kadar ulaştırıyoruz.</li>
+                        <li><strong>Tam Zamanında Teslimat:</strong> Otel ve restoranların "stok maliyeti" ve "tazelik" dengesini gözeterek, sevkiyatlarımızı mutfak yoğunluğunuza göre planlıyoruz.</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>2. Ürün Seçkisi ve Kalite Standartları</h3>
+                    <p>Portföyümüzü oluştururken sadece fiyatı değil, şeflerimizin beklentilerini baz alıyoruz.</p>
+                    <ul>
+                        <li><strong>Seçkin Tedarikçi Ağı:</strong> Yerel üreticilerden küresel markalara kadar, tüm ürünlerimizi gıda güvenliği sertifikalarına (ISO, HACCP) sahip kaynaklardan tedarik ediyoruz.</li>
+                        <li><strong>Süreklilik Garantisi:</strong> Menünüzde yer alan bir ürünün her zaman aynı kalitede ve formda olması için "standart ürün" garantisi veriyoruz.</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>3. Horeca Çözüm Ortaklığı</h3>
+                    <p>Sadece bir tedarikçi değil, mutfağınızın bir parçası gibi çalışıyoruz.</p>
+                    <ul>
+                        <li><strong>Özel Menü Danışmanlığı:</strong> Mevsimsel trendlere ve maliyet analizlerine göre şeflerimize yeni ürün önerileri sunuyoruz.</li>
+                        <li><strong>Esnek Sipariş Yönetimi:</strong> Dijital platformlarımız ve saha temsilcilerimiz aracılığıyla, mutfağınızın ani gelişen ihtiyaçlarına hızlı çözümler üretiyoruz.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pazarlama & Ürünler Bölümü -->
+    <section id="pazarlama" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Pazarlama Planı & Ürünlerimiz</h2>
+            <p class="text-center">Bir işletmenin başarısının mutfağından başladığını, mutfağın başarısının ise doğru ham maddeye zamanında ulaşmak olduğunu biliyoruz. Oreka Gıda olarak pazarlama stratejimizi sadece ürün satışı değil, sürdürülebilir bir iş ortaklığı üzerine kurguluyoruz.</p>
+            <div class="products-list">
+                <span class="badge">KURU BAKLİYAT</span>
+                <span class="badge">ŞARKÜTERİ</span>
+                <span class="badge">DONUK ÜRÜNLER</span>
+                <span class="badge">AMBALAJLI ÜRÜNLER</span>
+                <span class="badge">TEMİZLİK MALZEMELERİ</span>
+                <span class="badge">SEBZE VE MEYVE</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referanslar Bölümü -->
+    <section id="referanslar" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title">Referanslarımız</h2>
+            <div class="references-container">
+                <div class="ref-logo-item"><img src="referanslar/hilton.png" alt="Hilton"></div>
+                <div class="ref-logo-item"><img src="referanslar/mado.png" alt="Mado"></div>
+                <div class="ref-logo-item"><img src="referanslar/ramada.png" alt="Ramada"></div>
+                <div class="ref-logo-item"><img src="referanslar/magnolia.png" alt="Magnolia Bakery"></div>
+                <div class="ref-logo-item"><img src="referanslar/gloriajeans.png" alt="Gloria Jean's"></div>
+                <div class="ref-logo-item"><img src="referanslar/crowne.png" alt="Crowne Plaza"></div>
+                <div class="ref-logo-item"><img src="referanslar/subway.png" alt="Subway"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim / Footer -->
+    <footer id="iletisim" class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>OREKA GIDA</h3>
+                <p><strong>Ofis - Bayrampaşa:</strong> Kocatepe Mah. 32. Sk. No:30/A, Bayrampaşa/İstanbul</p>
+                <p><strong>Depo - Mega Center:</strong> Kocatepe Mah. Yemiş Meydanı Sk. Mega Center C Bloklar No: 1 İç Kapı No: 417, Bayrampaşa/İstanbul</p>
+            </div>
+            <div class="footer-contact">
+                <h3>İletişim</h3>
+                <p><strong>Yetkili Kişi:</strong> Belya Kale</p>
+                <p><strong>Telefon:</strong> +90 537 391 28 49</p>
+                <p><strong>E-posta:</strong> orekagida@gmail.com | info@orekagıda.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Oreka Gıda. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="oreka.js"></script>
+</body>
+</html>

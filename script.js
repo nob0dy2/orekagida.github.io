@@ -75,7 +75,7 @@ dots.forEach(dot => {
         updateSlider(currentSlide);
         
         // Otomatik geçişi tekrar başlat
-        slideInterval = setInterval(nextSlide, 5000);
+        slideInterval = setInterval(nextSlide, 3000);
     });
 });
 

@@ -42,7 +42,7 @@ let slideInterval;
 
 function initSlider() {
     if (slides.length > 0) {
-        slideInterval = setInterval(nextSlide, 5000); // Her 5 saniyede bir değiştir
+        slideInterval = setInterval(nextSlide, 3000); // Her 3 saniyede bir değiştir
     }
 }
 

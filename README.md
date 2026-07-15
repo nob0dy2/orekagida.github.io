@@ -1,2 +1,1 @@
 # orekagida.com
-

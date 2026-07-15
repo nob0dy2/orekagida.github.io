@@ -42,7 +42,7 @@ let slideInterval;
 
 function initSlider() {
     if (slides.length > 0) {
-        slideInterval = setInterval(nextSlide, 3000); // Her 3 saniyede bir değiştir
+        slideInterval = setInterval(nextSlide, 1000); // Her 1 saniyede bir değiştir
     }
 }
 
@@ -75,7 +75,7 @@ dots.forEach(dot => {
         updateSlider(currentSlide);
         
         // Otomatik geçişi tekrar başlat
-        slideInterval = setInterval(nextSlide, 3000);
+        slideInterval = setInterval(nextSlide, 1000);
     });
 });
 

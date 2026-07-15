@@ -34,7 +34,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// -------------------------------------
 // DİNAMİK CAROUSEL (SLIDER) 
+// -------------------------------------
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 let currentSlide = 0;
@@ -42,7 +44,8 @@ let slideInterval;
 
 function initSlider() {
     if (slides.length > 0) {
-        slideInterval = setInterval(nextSlide, 3000); // Her 3 saniyede bir değiştir
+        // Geçiş süresi 3 saniye (3000 milisaniye) olarak ayarlandı
+        slideInterval = setInterval(nextSlide, 3000); 
     }
 }
 
@@ -74,7 +77,7 @@ dots.forEach(dot => {
         // Slider'ı güncelle
         updateSlider(currentSlide);
         
-        // Otomatik geçişi tekrar başlat
+        // Otomatik geçişi tekrar başlat (3 saniye olarak ayarlandı)
         slideInterval = setInterval(nextSlide, 3000);
     });
 });

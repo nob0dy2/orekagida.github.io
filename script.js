@@ -44,17 +44,13 @@ let slideInterval;
 
 function initSlider() {
     if (slides.length > 0) {
-        // Geçiş süresi 3 saniye (3000 milisaniye) olarak ayarlandı
         slideInterval = setInterval(nextSlide, 3000); 
     }
 }
 
 function updateSlider(index) {
-    // Önce hepsinden active sınıfını kaldır
     slides.forEach(slide => slide.classList.remove('active'));
     dots.forEach(dot => dot.classList.remove('active'));
-
-    // Gelen index'e active sınıfı ekle
     slides[index].classList.add('active');
     dots[index].classList.add('active');
 }
@@ -67,17 +63,10 @@ function nextSlide() {
 // Noktalara tıklama olayı
 dots.forEach(dot => {
     dot.addEventListener('click', function() {
-        // Otomatik geçişi sıfırla ki kullanıcı tıkladığında hemen değişmesin
         clearInterval(slideInterval);
-        
-        // Tıklanan noktanın numarasını al
         const slideIndex = parseInt(this.getAttribute('data-slide'));
         currentSlide = slideIndex;
-        
-        // Slider'ı güncelle
         updateSlider(currentSlide);
-        
-        // Otomatik geçişi tekrar başlat (3 saniye olarak ayarlandı)
         slideInterval = setInterval(nextSlide, 3000);
     });
 });

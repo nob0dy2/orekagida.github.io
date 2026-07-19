@@ -21,13 +21,30 @@
                 <li><a href="#hakkimizda">Hakkımızda</a></li>
                 <li><a href="#neden-oreka">Neden Oreka?</a></li>
                 <li><a href="#referanslar">Referanslar</a></li>
-                <li><a href="#pazarlama">Ürünlerimiz</a></li>
+                <li><a href="urunlerimiz.html">Ürünlerimiz</a></li>
                 <li><a href="#iletisim">İletişim</a></li>
             </ul>
-            <div class="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+            
+            <!-- Sağ Üst: Sepet ve Menü Butonu -->
+            <div class="nav-right">
+                <a href="sepet.html" class="cart-icon" title="Sepetim">
+                    <!-- Sepet Yazısı -->
+                    <span class="cart-text">Sepet</span>
+                    <!-- SVG Sepet İkonu -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <!-- Sepetteki Ürün Sayısı -->
+                    <span class="cart-badge">0</span>
+                </a>
+
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
             </div>
         </div>
     </nav>
@@ -36,7 +53,6 @@
     <header class="hero" id="baslangic">
         <div class="hero-slides">
             
-            <!-- 1. Kuru Bakliyat -->
             <div class="slide active">
                 <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/bakliyat-ezremove.png');"></div>
                 <div class="slide-content">
@@ -47,7 +63,6 @@
                 </div>
             </div>
 
-            <!-- 2. Şarküteri -->
             <div class="slide">
                 <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/sarküteri.png');"></div>
                 <div class="slide-content">
@@ -58,7 +73,6 @@
                 </div>
             </div>
 
-            <!-- 3. Donuk Ürünler -->
             <div class="slide">
                 <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/donuk.png');"></div>
                 <div class="slide-content">
@@ -69,7 +83,6 @@
                 </div>
             </div>
 
-            <!-- 4. Ambalajlı Ürünler -->
             <div class="slide">
                 <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/ambalajli.png');"></div>
                 <div class="slide-content">
@@ -80,7 +93,6 @@
                 </div>
             </div>
 
-            <!-- 5. Temizlik Malzemeleri -->
             <div class="slide">
                 <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/temizlik.png');"></div>
                 <div class="slide-content">
@@ -91,7 +103,6 @@
                 </div>
             </div>
 
-            <!-- 6. Sebze ve Meyve -->
             <div class="slide">
                 <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/sebze.png');"></div>
                 <div class="slide-content">
@@ -103,7 +114,6 @@
             </div>
         </div>
 
-        <!-- Slider Navigasyon Noktaları -->
         <div class="slider-dots">
             <span class="dot active" data-slide="0"></span>
             <span class="dot" data-slide="1"></span>

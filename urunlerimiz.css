@@ -1,0 +1,190 @@
+/* Ürünler Sayfası Genel Yerleşimi */
+.products-page-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 120px; /* Sabit navbarın altında kalmaması için */
+    margin-bottom: 80px;
+    min-height: 60vh;
+}
+
+/* Sol Kısım: Kategoriler Sidebar */
+.sidebar-categories {
+    width: 250px;
+    flex-shrink: 0;
+    background: #ffffff;
+    padding: 25px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    height: fit-content;
+}
+
+.sidebar-categories h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f39c12;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+}
+
+.category-list li {
+    margin-bottom: 12px;
+}
+
+.category-list a {
+    text-decoration: none;
+    color: #555;
+    font-size: 15px;
+    display: block;
+    transition: all 0.3s ease;
+    padding: 5px 0;
+}
+
+.category-list a:hover, 
+.category-list a.active {
+    color: #f39c12;
+    font-weight: 600;
+    padding-left: 5px; /* Hover efektiyle hafif sağa kayma */
+}
+
+/* Sağ Kısım: Ürün Izgarası */
+.products-main-area {
+    flex-grow: 1;
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+.products-header h2 {
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+.sort-box select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-family: inherit;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Kart Izgara Sistemi */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* Ürün Kartı Tasarımı */
+.product-card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.product-img-wrapper {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-title {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: auto; /* Butonu ve fiyatı her kartta aynı hizaya iter */
+}
+
+.add-to-cart-btn {
+    background-color: #fff;
+    color: #f39c12;
+    border: 2px solid #f39c12;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #f39c12;
+    color: #fff;
+}
+
+.add-to-cart-btn:active {
+    transform: scale(0.97);
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 900px) {
+    .products-page-container {
+        flex-direction: column;
+    }
+    
+    .sidebar-categories {
+        width: 100%;
+    }
+    
+    .products-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}

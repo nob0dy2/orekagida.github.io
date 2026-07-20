@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ürünlerimiz - Oreka Gıda</title>
-    <!-- Favicon -->
     <link rel="icon" href="orekalogo.png" type="image/png">
-    <!-- Ortak Stiller (Navbar & Footer) -->
     <link rel="stylesheet" href="style.css">
-    <!-- Ürünler Sayfası Özel Stilleri -->
     <link rel="stylesheet" href="urunlerimiz.css">
 </head>
 <body class="bg-light">
@@ -19,7 +16,6 @@
             <a href="index.html#baslangic" class="logo">
                 <img src="orekalogo.png" alt="Oreka Gıda Logo" class="logo-img">
             </a>
-            
             <ul class="nav-links">
                 <li><a href="index.html#hakkimizda">Hakkımızda</a></li>
                 <li><a href="index.html#neden-oreka">Neden Oreka?</a></li>
@@ -27,22 +23,16 @@
                 <li><a href="urunlerimiz.html" style="color: #f39c12;">Ürünlerimiz</a></li>
                 <li><a href="index.html#iletisim">İletişim</a></li>
             </ul>
-            
-            <!-- Sağ Üst: Sepet ve Menü Butonu -->
             <div class="nav-right">
                 <a href="sepet.html" class="cart-icon" title="Sepetim">
-                    <!-- Sepet Yazısı -->
                     <span class="cart-text">Sepet</span>
-                    <!-- SVG Sepet İkonu -->
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
-                    <!-- Sepetteki Ürün Sayısı -->
                     <span class="cart-badge">0</span>
                 </a>
-
                 <div class="hamburger">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -52,115 +42,1710 @@
         </div>
     </nav>
 
-    <!-- Ürünler Sayfası İçeriği -->
+    <!-- FİLTRE VE KATEGORİ AÇILIR PANELİ (DRAWER) -->
+    <div class="filter-overlay" id="filterOverlay"></div>
+    <div class="filter-drawer" id="filterDrawer">
+        <div class="filter-drawer-header">
+            <h3>Filtrele</h3>
+            <button class="close-filter-btn" id="closeFilterBtn">&times;</button>
+        </div>
+        <div class="filter-drawer-body">
+            <!-- Kategoriler -->
+            <div class="filter-section">
+                <h4>Kategoriler</h4>
+                <ul class="filter-category-list">
+                    <li><a href="#" class="active" data-target="all">Tüm Ürünler</a></li>
+                    <li><a href="#" data-target="peynir">Peynir Çeşitleri</a></li>
+                    <li><a href="#" data-target="kasar">Kaşar Çeşitleri</a></li>
+                    <li><a href="#" data-target="zeytin">Zeytin Çeşitleri</a></li>
+                    <li><a href="#" data-target="et">Jambon - Salam - Sosis - Sucuk - Pastırma</a></li>
+                    <li><a href="#" data-target="piknik">Piknik Grubu</a></li>
+                    <li><a href="#" data-target="yogurt">Yoğurt Grubu</a></li>
+                    <li><a href="#" data-target="ambalaj">Ambalaj - Kağıt Grubu - Gıda Dışı</a></li>
+                    <li><a href="#" data-target="margarin">Margarin Grubu</a></li>
+                    <li><a href="#" data-target="bakliyat">Bakliyat Grubu</a></li>
+                    <li><a href="#" data-target="yag">Yağ - Grubu</a></li>
+                    <li><a href="#" data-target="yumurta">Yumurta Çeşitleri</a></li>
+                </ul>
+            </div>
+            <!-- Fiyat Aralığı -->
+            <div class="filter-section">
+                <h4>Fiyat Aralığı (TL)</h4>
+                <div class="price-range-inputs">
+                    <input type="number" id="minPrice" placeholder="En Az" min="0">
+                    <span>-</span>
+                    <input type="number" id="maxPrice" placeholder="En Çok" min="0">
+                </div>
+            </div>
+        </div>
+        <div class="filter-drawer-footer">
+            <button class="apply-filter-btn" id="applyFilterBtn">Filtreleri Uygula</button>
+            <button class="reset-filter-btn" id="resetFilterBtn">Sıfırla</button>
+        </div>
+    </div>
+
+    <!-- Ürünler Sayfası İçeriği (Tam Genişlik) -->
     <main class="products-page-container container">
         
-        <!-- Sol Menü: Kategoriler -->
-        <aside class="sidebar-categories">
-            <h3>Kategoriler</h3>
-            <ul class="category-list">
-                <li><a href="#" class="active">Tüm Ürünler</a></li>
-                <li><a href="#">Kuru Bakliyat</a></li>
-                <li><a href="#">Şarküteri</a></li>
-                <li><a href="#">Donuk Ürünler</a></li>
-                <li><a href="#">Ambalajlı Ürünler</a></li>
-                <li><a href="#">Temizlik Malzemeleri</a></li>
-                <li><a href="#">Sebze ve Meyve</a></li>
-            </ul>
-        </aside>
-
-        <!-- Sağ Taraf: Ürün Izgarası -->
         <section class="products-main-area">
-            <div class="products-header">
-                <h2>Tüm Ürünler</h2>
-                <div class="sort-box">
-                    <select>
-                        <option>Varsayılan Sıralama</option>
-                        <option>Fiyata Göre Artan</option>
-                        <option>Fiyata Göre Azalan</option>
-                        <option>A'dan Z'ye</option>
-                    </select>
+            
+            <!-- ÜST KONTROL ÇUBUĞU -->
+            <div class="products-toolbar">
+                <div class="toolbar-left">
+                    <button class="filter-toggle-btn" id="filterToggleBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                        Filtrele
+                    </button>
+                    
+                    <div class="sort-dropdown-container">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="default">Sıralama: Varsayılan</option>
+                            <option value="az">İsim: A-Z</option>
+                            <option value="za">İsim: Z-A</option>
+                            <option value="price-asc">Fiyat: Artan</option>
+                            <option value="price-desc">Fiyat: Azalan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="toolbar-right">
+                    <div class="search-box">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="searchInput" placeholder="Ara...">
+                    </div>
+                    
+                    <div class="view-options">
+                        <button class="view-btn active" id="gridViewBtn" title="Grid Görünüm">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        </button>
+                        <button class="view-btn" id="listViewBtn" title="Liste Görünüm">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="products-grid">
-                <!-- Ürün Kartı 1 -->
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <!-- Ürün görseli eklenecek alan -->
-                        <img src="https://via.placeholder.com/400x300?text=Kuru+Fasulye" alt="Ürün" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-title">İspir Kuru Fasulye 5 KG</h4>
-                        <p class="product-price">₺0,00</p>
-                        <button class="add-to-cart-btn">Sepete Ekle</button>
-                    </div>
-                </div>
+            <div class="products-header">
+                <h2 id="category-title">Tüm Ürünler</h2>
+            </div>
 
-                <!-- Ürün Kartı 2 -->
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="https://via.placeholder.com/400x300?text=Osmancik+Pirinc" alt="Ürün" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-title">Osmancık Pirinç 10 KG</h4>
-                        <p class="product-price">₺0,00</p>
-                        <button class="add-to-cart-btn">Sepete Ekle</button>
-                    </div>
-                </div>
-
-                <!-- Ürün Kartı 3 -->
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="https://via.placeholder.com/400x300?text=Kasar+Peyniri" alt="Ürün" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-title">Tam Yağlı Kaşar Peyniri 2 KG</h4>
-                        <p class="product-price">₺0,00</p>
-                        <button class="add-to-cart-btn">Sepete Ekle</button>
-                    </div>
-                </div>
-
-                <!-- Ürün Kartı 4 -->
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="https://via.placeholder.com/400x300?text=Aycekirdek+Yagi" alt="Ürün" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-title">Ayçiçek Yağı 18 LT Teneke</h4>
-                        <p class="product-price">₺0,00</p>
-                        <button class="add-to-cart-btn">Sepete Ekle</button>
-                    </div>
-                </div>
+            <div class="products-grid" id="product-container">
                 
-                <!-- Ürün Kartı 5 -->
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="https://via.placeholder.com/400x300?text=Donuk+Patates" alt="Ürün" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-title">Parmak Patates (Donuk) 10 KG</h4>
-                        <p class="product-price">₺0,00</p>
-                        <button class="add-to-cart-btn">Sepete Ekle</button>
-                    </div>
+                <!-- PEYNİR ÇEŞİTLERİ -->
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bolu Kolot Peyniri 500 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İskenderoğlu Kolot Peynir 500 Gr * 16</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ariste Kolot Peyniri 500 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kebir Kuymak Peynir 500 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İskenderoğlu Kuymak Peynir 500 Gr * 24</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özdemir Mihaliç Peynir Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Teksüt Mihaliç Peyniri 350 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ariste Mihaliç Peyniri 300 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Lente İsli Çerkez Peyniri Vakumlu 1500 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Lente Emmantel 500 Gr Vakumlu</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İthal - Frico Peynir Edam Biberli Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İthal - Frico Peynir Edam Otlu Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İthal - Frico Peynir Edam Sade Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Lente Gouda Sade & Edam 500 Gr Vakumlu</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Brie Peynir 125 Gr Paket</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Gravyer Peyniri (Kars) Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ariste Kars Gravyer Peyniri 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bahar Sepet Peyniri Baharatlı 350 Gr Vakumlu</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bolu Sepet Peyniri 500 Gr * 24</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sarıbaş Sepet Peyniri Sade Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sarıbaş Sepet Peyniri Biberli Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bahar Sepet Peyniri Çörek Otlu 350 Gr Vakumlu</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sarıbaş Sepet Peyniri Çörekotlu Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bahar Sepet Peyniri Vakumlu 350 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İthal - Küflü Peynir (Rokfor) Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İthal - Blue Heaven Peynir Rokfor Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danablu Rokfor / Danish Blu Cheese Vakumlu 500 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Lente Gouda Kimyonlu 500 Gr Vakumlu</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Lente Gouda Hardallı 500 Gr Vakumlu</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Lente Gouda Biberli 500 Gr Vakumlu</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Hard Cheese Parmesan Parça Vakumlu 2000 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ambrosini Parmesan Toz Grana Padano Vakumlu 1000 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ambrosini Parmesan Grana Padano Vakumlu 2000 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İthal - Kerry Gold Cheddar Blok Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Royal Cheddar Burger Peynir Dilimli 1000 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanoğlu Cheddar Dilimli Peynir 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Parmesan Peynir Toz 1000 Gr * 10 Adet</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tulsüt Tulum Peynir Çuval (Beyaz) 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tulsüt Tulum Peynir Çuval (Sarı) 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Meriç Hellim Peynir Kıbrıs Az Tuzlu 225 Gr * 48</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Miraçbey Tulum Peynir Yaprak Çuval 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Muratbey Mozarella Rende 150 Gr * 15</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Örgü Peynir 1000 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Köy Peynir T.yağlı Kova 9 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Dil Peynir 1000 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Çeçil Peynir 2000 Gr * 4</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ak-du Otlu Peynir 250 Gr * 18</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ak-du Tulum Peyniri İzmir (Koyun) Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ak-du Tulum Peyniri İzmir (İnek) 300 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">A.r Z Tulum Peyniri (Vakumlu) Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">A.r Z Tulum Peyniri Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">A.r.muş Eski Kaşar Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Beyaz Piknik 20 Gr * 120</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Teksüt Krem Peynir Piknik</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Teksüt Misket Peynir 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Beyaz 2750 Gr * 4</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bergaz Beyaz Peynir Koyun Ezine 18 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Gökçebayır Beyaz Peynir Ezine İnek 18 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınkılıç Beyaz Peynir Klasik 18 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Beyaz Peynir Klasik Vakumlu Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Teksüt Krem Peynir Kova 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özgüllü Dil Peynir 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özgüllü Örgü Peynir 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Muratbey Burgu Peynir Tava 4 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Muratbey Topi Peynir Tava 4 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Karper Peynir 18 Li Multipack * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Karper Peynir 8 Li 100 Gr * 24</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Karper Peynir 16 Lı Ekonomik 200 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kebir Kolot Peynir 400 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kebir Kuymak Peynir 500 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınkılıç Otlu Peynir Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bahçıvan Mozarella Rende Peynir 2000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bolu İsli Peynir Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Cebeci Lor Peynir 500 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Cebeci Lor Peynir 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ekici Beyaz Peynir Lokum Kıvamı 20 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ekici Hellim Peyniri 225 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Gürsüt Krem Peynir 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınkılıç Otlu Peynir 100 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kuzucu Beyaz Peynir 1 Kg * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kuzucu Beyaz Peynir 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kuzucu Beyaz Peynir 17 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ezine Peynir</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınkılıç Ezine Peynir İnek 450 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Beyaz Peynir Extra İnek 18 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Beyaz Peynir Vakumlu (İnce Dilim) Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Çeçil Peynir 250 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Çeçil Peynir (Koli) 4000 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Dil Peynir 250 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Eski Kaşar Anadolu 250 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Örgü Peynir 250 Gr * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Taze Kaşar Peynir 700 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ünal Kaşar Peyniri 400 Gr * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Beyaz Peynir Klasik İnek Gold 18 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tahsildaroğlu Ezine Peynir</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşilçay Yarım Yağlı Beyaz Peynir</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Onur Beyaz Peynir Olgunlaştırılmış İnek 18 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pele Sert Beyaz Peynir</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özgüllü Çeçil Peynir 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güzelce Örgü Peynir</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pele Çeçil Peynir</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="peynir">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Şensa Örgü Peynir Tava 3 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
                 </div>
 
-                <!-- Ürün Kartı 6 -->
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="https://via.placeholder.com/400x300?text=Endustriyel+Deterjan" alt="Ürün" class="product-img">
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-title">Endüstriyel Bulaşık Deterjanı 20 KG</h4>
-                        <p class="product-price">₺0,00</p>
-                        <button class="add-to-cart-btn">Sepete Ekle</button>
-                    </div>
+                <!-- KAŞAR ÇEŞİTLERİ -->
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
                 </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aylaç Taze Tost Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özgüllü Taze Kaşar Peynir 2,5 Kg * 5</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Trakya Eski Kaşar Peynir M D İnek Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sarıgüzel Taze Kaşar Peynir 2000 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İçer Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özgüllü Taze Kaşar Peynir 2000 Gr * 5</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Muratbey Taze Kaşar Peynir 2000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Mupaş Eski Kaşar Peynir Vakumlu Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kars Eski Kaşar Peynir Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Kaşar Peyniri Yarım Yağlı 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Has Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Kaşar Peyniri Tam Yağlı 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güneşoğlu Taze Kaşar Peynir 2000 Gr * 5</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Gezek Taze Kaşar Peynir Pidelik 2000 Gr *5</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanyıldızı Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanyıldızı Taze Kaşar Peynir 2000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanoğlu Taze Kaşar Peynir 2000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Teksüt Taze Kaşar Peyniri 600 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tahsildaroğlu Taze Kaşar Peynir 600 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tahsildaroğlu Eski Kaşar Ezine 350 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Taciroğlu Eski Kaşar 250 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güneşoğlu Taze Kaşar Peynir 1000 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanoğlu Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Muratbey Taze Kaşar Peynir 500 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Cebeci Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınkılıç Eski Kaşar Koyun Trakya Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özgüllü Taze Kaşar Peynir 1000 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Vahdet Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sarıgüzel Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Muratbey Taze Kaşar Peynir 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Torku Taze Kaşar Peynir Tost 600 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanoğlu Taze Kaşar Peynir Dilimli 1500 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanyıldızı Taze Kaşar Peynir Dilimli 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Türkova Taze Kaşar Peynir Dilimli 1500 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Gültepe Taze Kaşar Peynir Dilimli 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Narin Kaşar Peyniri Dilimli 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kaşkar Eski Kaşar Dilimli Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Kaşar Peyniri Dilimli 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Onur Taze Kaşar Peynir Dilimli 500 Gr * 24</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Torku Taze Kaşar Dilimli 350 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Coşkun Kaşar Peyniri Tost 1000 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Muratbey Taze Kaşar Peynir Dilimli 225 Gr * 24</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güneşoğlu Taze Kaşar Peynir Dilimli 1000 Gr *6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Cebeci Taze Kaşar Peynir Dilimli 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanoğlu Kaşar Peyniri Dilimli 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çobanoğlu Kaşar Yarım Yağlı Dilimli 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özgüllü Taze Kaşar Peynir Dilimli 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Uzelköy Dilimli Taze Kaşar 1000 Gr * 9</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="kasar">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sarıgüzel Dilimli Kaşar 1000 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- ZEYTİN ÇEŞİTLERİ -->
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Zeytin Siyah Az Tuzlu 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Zeytin Siyah Kalamata 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ege Eylül Yeşil Zeytin Kuru Domates Dolgulu 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin Gurme 181-210 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin Kızıl Kahverengi Kapak 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin 350-380 Mavi Kapak 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin 321-350 Yeşil Tnk 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin 290-320 Kırmızı Tnk 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin 260-290 Bordo Tnk 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin 230-260 Siyah Tnk 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin 201-230 Beyaz Tnk 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Aksa Siyah Zeytin Ezmesi Kova 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Marmara Birlik Siyah Zeytin Mega 800 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Marmara Birlik Siyah Zeytin Kuru Sele 800 Gr *6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Marmara Birlik Siyah Zeytin Gold 800 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Marmara Birlik Siyah Zeytin Az Tuzlu 800 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pele Jumbo Siyah Zeytin 290-320 Clb 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pele Siyah Zeytin 230-260 Clb</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güngör Yeşil Zeytin Kırma 160-180 Clb 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güngör Yeşil Zeytin Biberli 180-200 Clb 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güngör Yeşil Zeytin Kokyeyl 100-120 Clb 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güngör Yeşil Zeytin Kırma 120-140 Clb 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güngör Yeşil Zeytin Çizik 201-230 Clb 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güngör Yeşil Zeytin Biberli 200-230 Clb 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Güngör Yeşil Zeytin Biberli 120-140 Clb 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ece Yeşil Zeytin Dilimli 370 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ece Siyah Zeytin Light 400 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ece Siyah Zeytin Dilimli 370 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Yeşil Zeytin Süper Kırma 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Yeşil Zeytin Özel Çizik (210-230) 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Yeşil Zeytin Kırma 700 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Yeşil Zeytin Çizik 700 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Yeşil Zeytin Biberli 700 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Siyah Zeytin Pet 900 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağbaşı Zeytin Salatası 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Alan Siyah Zeytin Mega 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Alan Siyah Zeytin Special 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Alan Siyah Zeytin Kuru Sele Özel Ürün 9 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Alan Siyah Zeytin Jumbo 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Fora Zeytin Ezmesi 340 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Zeytin Ezmesi 200 Gr * 25</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Siyah Zeytin Ezmesi Kova 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Akdeniz Salatası Izgara Zeytin Kova 3 Kg * 4</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Yeşil Zeytin Özel Biberli 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Yeşil Zeytin Dilimli 8 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Siyah Zeytin Dilimli 8 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Siyah Zeytin Prima 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bağcı Siyah Zeytin Süper 4 Kg * 4</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Biberli Yeşil Zeytin (120-140) Kalibre</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çolban Biberli Yeşil Zeytin (140-160) Kalibre</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İkram Yeşil Zeytin Duble Grill Izgara 9 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="zeytin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Zova Yeşil Zeytin Izgara Zeytin (Grill) 9 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- JAMBON-SALAM-SOSİS-SUCUK-PASTIRMA -->
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Sucuk Gold Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Sucuk Çatal Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Janbon Piliç Sebzeli 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Janbon Dana 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Kavurma Dana Blok Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Pastırma Sırt Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Pastırma Seçme Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Pastırma Dilimli Sıralı 250 Gr * 30</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Pastırma Dilimli 90 Gr * 15</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Pastırma Antirikot Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Kuru Et Blok Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Kuru Et Antirikot Blok Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Kavurma Dilimli 150 Gr * 15</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Kavurma Dana Vakumlu Kare Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Kavurma Dana Tnk Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Çapanoğlu Janbon Dana Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Füme Dil Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Ayan Füme Hindi Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İmamoğlu Pastırma Dilim (Çemensiz) 100 Gr * 30</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Coşkun Pastırma Dilimli 80 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Başyazıcı Pastırma Dilim Seçme 100 Gr * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Salam Dana Fıstıklı 1250 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Şahin Kavurma Dana Blok Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Şahin Salam Dana Macar 900 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Şahin Salam İspanyol 2 Kg * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Salam Dana Macar 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Salam Dana Macar Fıstıklı 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Namet Salam Dana Fıstıklı 1250 Gr</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Sucuk Piliç Dilimli 250 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Sucuk Dana Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Coşkun Sucuk Dana Çatal Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Coşkun Sucuk Dana Kasap Kvt Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Başyazıcı Kavurma Dana Blok Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Başyazıcı Kavurma Dana Dilimli 100 Gr * 40</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Janbon Dana Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Kavurma Dana Blok Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Coşkun Salam Dana Macar - Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Coşkun Salam Dana İspanyol Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Coşkun Sucuk Dana Baton Küvet Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Banvit Salam Piliç 750 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Apikoğlu Sucuk Dana Parmak Küvet Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Apikoğlu Sucuk Dana Kangal Küvet Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Apikoğlu Kavurma Dana Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınay Sosis Piliç Büfe Uzun 1000 * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınay Sosis Piliç (Jülyen) Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınay Jambon Piliç Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınay Jambon Piliç Sebzeli Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınay Jambon Dana Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınay Jambon Hindi</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Sucuk Dana Dilimli 500 Gr * 9</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İnan Sucuk Dana Baton Büfe 350 Gr * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınay Sucuk Dilimli Piliç 750 Gr * 16</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Hünkar Sucuk Piliç Baton 400 Gr * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Sosis Dana Kokteyl 215 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Sosis Dana Uzun Soyulmuş 225 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Sosis Piliç Kokteyl Eko 700 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Sosis Dana Kokteyl 220 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beşler Dökme Sosis Piliç Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Sosis Piliç Kokteyl 250 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Salam Etli Macar 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Salam Dana Macar 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Danet Salam İspanyol Fıstıklı 2000 Gr * 2</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Salam Hindi Etli 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Salam Hindi Büfe 900 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Salam Hindi Fıstıklı 1000 Gr * 6</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Başyazıcı Salam Dana Macar 900 Gr * 15</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="et">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Altınay Salam Piliç Eko 1000 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- PİKNİK GRUBU -->
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sütaş Çam Balı 20 Gr * 36</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sütaş Reçel Çilek Piknik 20 Gr * 36</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sütaş Tereyağ Piknik 15 Gr * 48</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İçim Taze Peynir Piknik 20 Gr * 128</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İçim Labne Peynir Piknik 20 Gr * 128</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İçim Tereyağ Piknik 20 Gr * 128</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İçim Reçel Çilek Piknik 20 Gr * 96</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İçim Reçel Vişne Piknik 20 Gr * 96</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İçim Bal Piknik 20 Gr * 96</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Vişne Piknik 200 Gr * 18</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Vişne Piknik 100 Gr * 36</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Karma Piknik 200 Gr * 18</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Karma Piknik 100 Gr * 36</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Çilek Piknik 200 Gr * 18</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Çilek Piknik 100 Gr * 36</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Koska Piknik Vişne Reçeli 20 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Koska Piknik Çilek Reçeli 20 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Piknik Kakaolu Fındık Krema 15 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Piknik Çam Balı 15 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Koska Piknik Çam Balı 20 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Koska Piknik Çikos Çokokrem 15 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Koska Helva Sade Piknik 20 Gr * 25</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Piknik Çilek 20 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Piknik Vişne 20 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Reçel Piknik Kayısı 20 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Koska Piknik Tereyağ 10 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Piknik Tereyağ 10 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Pınar Tereyağ Piknik 10 Gr * 192</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Teksüt Piknik Tereyağ 10 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Koska Piknik Tahin-Pekmez 20 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Seyidoğlu Tahinli Pekmez Piknik 20 Gr * 100</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Heinz Barbekü Sos Bbq Hp Klasik 465 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Heinz Hardal Mild 445 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Heinz Ketçap Acılı 460 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Heinz Ketçap Tatlı 460 Gr * 10</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Heinz Mayonez 400 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Heinz Sos Acı Biberli (Hot Chilli) 245 Gr * 8</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Calve Ranch Sos 245 Gr * 12</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tukaş Ketçap Kova 9 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="piknik">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tukaş Mayonez Kova 8 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- YOĞURT GRUBU -->
+                <div class="product-card" data-category="yogurt">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Gürsüt Yoğurt Süzme 10 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yogurt">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Teksüt Süzme Yoğurt 9 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yogurt">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özpey Süzme Yoğurt Kova 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- AMBALAJ - KAĞIT GRUBU - GIDA DIŞI ÜRÜNLER -->
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Focus Havlu 24'lü</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Focus Tuvalet Kağıdı 48'li</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İçten Çekmeli Havlu 6'lı 2,5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Hareketli Havlu 6'lı 2,5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Mini Jumbo Tuvalet Kağıdı 6'lı 2,5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Z Havlu Peçete 100'lü</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Dispanser Peçete 100'lü</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Mutfak Bezi 40*40</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Eldiven (Beyaz) 100'lü * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Eldiven (Siyah) 100'lü * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Eldiven (Mavi) 100'lü * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Eldiven (Beyaz Pudrasız) 100'lü * 20</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Karton Bardak 3000 Adet</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Streç Film (30 Cm)</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Streç Film (45 Cm)</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Alüminyum Folyo (30 Cm) 2 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Alüminyum Folyo (45 Cm) 2 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tahta Karıştırıcı A Kalite 500 Adet</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="ambalaj">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Tahta Karıştırıcı B Kalite 500 Adet</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- MARGARİN GRUBU -->
+                <div class="product-card" data-category="margarin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Birma Margarin 250 Gr * 48</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="margarin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yayla Margarin 250 Gr * 48</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="margarin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bizim Margarin 250 Gr * 48</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="margarin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Terem Margarin 250 Gr * 48</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="margarin">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Sana Margarin 250 Gr * 24</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- BAKLİYAT GRUBU -->
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Gönen Baldo 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Trakya Baldo 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Osmancık Pirinç 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Kırık Pirinç 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin İri Bulgur 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Orta Bulgur 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Köftelik Bulgur 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Kırmızı Mercimek Futbol 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Yeşil Mercimek 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Sıra Fasulye 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Dermason Fasulye 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 8 Mm Nohut 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 10 Mm Nohut 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Aşurelik Buğday 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin Patlayan Mısır 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Aşurelik Buğday</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Nohut 10 Mm</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Nohut 8 Mm</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Dermason Fasulye</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Sıra Fasulye</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Yeşil Mercimek</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Kırmızı Mercimek Futbol</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Köftelik Bulgur</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Orta Bulgur</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 İri Bulgur</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Kırık Pirinç</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Osmancık</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Trakya Baldo</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mersin 2,5 Kg * 6 Gönen Baldo</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Filiz Makarna Tel Şehriye 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Filiz Makarna Arpa Şehriye 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Olida Baldo Pirinç 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Olida Osmancık Pirinç 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Olida Bulgur 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Olida Mercimek 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Olida Yeşil Mercimek 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Olida Fasulye Konya 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Olida Beyaz İthal Nohut 5 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kalyon Baldo Pirinç 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Zeki Osmancık Pirinç 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Özsarı Bulgur 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İthal Kırmızı Mercimek 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yerli Kırmızı Mercimek 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yeşil Mercimek 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yerli Konya Fasulye 8 Mm 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">İthal Fasulye 9 Mm 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Beyaz Nohut Meksika 12 Mm 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="bakliyat">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Nohut 9 Mm 25 Kg</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- YAĞ - GRUBU -->
+                <div class="product-card" data-category="yag">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bizim Kızartma Yağı 18 L</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yag">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Kent Boringer Kızartma Yağı Tnk 18 Lt</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yag">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">18/1 Frita Kızartma Yağı</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yag">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Biryağ Ayçiçek Yağı 5 L * 4</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yag">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Bizim Ayçiçek Yağı 5 L * 4</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yag">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Yudum Ayçiçek Yağı 5 L * 4</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yag">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">Komili Zeytinyağı Sızma 5 L * 4</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
+                <!-- YUMURTA ÇEŞİTLERİ -->
+                <div class="product-card" data-category="yumurta">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">A Kalite Yumurta S (53 Gr)</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yumurta">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">A Kalite Yumurta M (53-63 Gr) 30 Adet</h4><p class="product-price">₺58,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yumurta">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">A Kalite Yumurta L (63-73 Gr) 30 Adet</h4><p class="product-price">₺66,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+                <div class="product-card" data-category="yumurta">
+                    <div class="product-img-wrapper"><img src="" alt="Ürün Fotoğrafı" class="product-img"></div>
+                    <div class="product-info"><h4 class="product-title">A Kalite Yumurta Xl (73 Gr >)</h4><p class="product-price">₺0,00</p><button class="add-to-cart-btn">Sepete Ekle</button></div>
+                </div>
+
             </div>
         </section>
     </main>
 
-    <!-- İletişim / Footer -->
+    <!-- Footer -->
     <footer id="iletisim" class="footer">
         <div class="container footer-content">
             <div class="footer-info">

@@ -125,26 +125,6 @@ body {
     font-weight: 500;
 }
 
-/* Fiyat Aralığı Inputları */
-.price-range-inputs {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.price-range-inputs input {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-    font-size: 0.9rem;
-}
-
-.price-range-inputs input:focus {
-    border-color: #f39c12;
-}
-
 .filter-drawer-footer {
     padding: 15px 20px;
     border-top: 1px solid #eee;
@@ -288,10 +268,11 @@ body {
     background: #f39c12;
 }
 
+/* ÜRÜNLER BAŞLIĞI VE SAYICI */
 .products-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 15px; /* Başlık ve sayı arasındaki boşluk */
     margin-bottom: 20px;
     background: #fff;
     padding: 15px 20px;
@@ -303,6 +284,16 @@ body {
     font-size: 1.5rem;
     color: #2c3e50;
     margin: 0;
+}
+
+.product-count-badge {
+    background-color: #f39c12;
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(243, 156, 18, 0.3);
 }
 
 /* --- ÜRÜN IZGARASI VE KARTLARI --- */
@@ -361,13 +352,6 @@ body {
     margin-bottom: 12px;
     font-weight: 600;
     line-height: 1.4;
-}
-
-.product-price {
-    font-size: 1.1rem;
-    color: #27ae60;
-    font-weight: 700;
-    margin-bottom: 12px;
 }
 
 .add-to-cart-btn {

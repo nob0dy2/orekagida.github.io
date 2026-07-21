@@ -14,16 +14,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeFilterBtn = document.getElementById('closeFilterBtn');
     const applyFilterBtn = document.getElementById('applyFilterBtn');
     const resetFilterBtn = document.getElementById('resetFilterBtn');
-    const minPriceInput = document.getElementById('minPrice');
-    const maxPriceInput = document.getElementById('maxPrice');
 
-    // Hamburger Menü Kontrolü
+    // Ürün sayısı etiketi
+    const productCountBadge = document.getElementById('product-count');
+
+    // ----------------------------------------------------
+    // MOBİL HAMBURGER MENÜ KONTROLÜ
+    // ----------------------------------------------------
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links li a');
 
     if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
             navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
         });
     }
 
@@ -53,6 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             currentCategory = this.getAttribute('data-target');
             categoryTitle.textContent = this.textContent;
+            
+            // Kategori değiştiğinde ürünleri filtrele ve sayıyı güncelle
+            filterProducts();
         });
     });
 
@@ -71,9 +85,8 @@ document.addEventListener('DOMContentLoaded', function () {
             document.querySelector('.filter-category-list a[data-target="all"]').classList.add('active');
             currentCategory = 'all';
             categoryTitle.textContent = "Tüm Ürünler";
-            minPriceInput.value = '';
-            maxPriceInput.value = '';
             if (searchInput) searchInput.value = '';
+            
             filterProducts();
             toggleFilterDrawer(false);
         });
@@ -83,31 +96,35 @@ document.addEventListener('DOMContentLoaded', function () {
     if (searchInput) searchInput.addEventListener('input', () => filterProducts());
     if (sortSelect) sortSelect.addEventListener('change', () => sortProducts());
 
-    // Ana Filtreleme (Kategori, Arama ve Fiyat Aralığı)
+    // Ana Filtreleme (Kategori ve Arama) VE Ürün Sayacı
     function filterProducts() {
         const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
-        const minPrice = parseFloat(minPriceInput.value) || 0;
-        const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
         const productCards = productContainer.querySelectorAll('.product-card');
+        
+        let visibleProductCount = 0; // Görünür ürünleri saymak için değişken
 
         productCards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
             const titleText = card.querySelector('.product-title').textContent.toLowerCase();
-            const priceText = parseFloat(card.querySelector('.product-price').textContent.replace('₺', '').replace(',', '.')) || 0;
 
             const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
             const matchesSearch = titleText.includes(searchTerm);
-            const matchesPrice = (priceText >= minPrice && priceText <= maxPrice);
 
-            if (matchesCategory && matchesSearch && matchesPrice) {
+            if (matchesCategory && matchesSearch) {
                 card.style.display = 'flex';
+                visibleProductCount++; // Şarta uyanları say
             } else {
                 card.style.display = 'none';
             }
         });
+
+        // Ekranda gösterilen etiketi güncelle
+        if (productCountBadge) {
+            productCountBadge.textContent = visibleProductCount + " Ürün";
+        }
     }
 
-    // Sıralama Fonksiyonu
+    // Sıralama Fonksiyonu (Sadece A-Z ve Z-A İsim Sıralaması)
     function sortProducts() {
         const productCardsArray = Array.from(productContainer.querySelectorAll('.product-card'));
         const sortValue = sortSelect.value;
@@ -115,15 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
         productCardsArray.sort((a, b) => {
             const titleA = a.querySelector('.product-title').textContent.trim();
             const titleB = b.querySelector('.product-title').textContent.trim();
-            
-            const priceA = parseFloat(a.querySelector('.product-price').textContent.replace('₺', '').replace(',', '.')) || 0;
-            const priceB = parseFloat(b.querySelector('.product-price').textContent.replace('₺', '').replace(',', '.')) || 0;
 
             if (sortValue === 'az') return titleA.localeCompare(titleB, 'tr');
             if (sortValue === 'za') return titleB.localeCompare(titleA, 'tr');
-            if (sortValue === 'price-asc') return priceA - priceB;
-            if (sortValue === 'price-desc') return priceB - priceA;
-            return 0;
+            return 0; 
         });
 
         productCardsArray.forEach(card => productContainer.appendChild(card));
@@ -143,4 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
             productContainer.style.gridTemplateColumns = '1fr';
         });
     }
+
+    // Sayfa ilk yüklendiğinde tüm ürünlerin sayısını hesapla ve ekrana yaz
+    filterProducts();
 });

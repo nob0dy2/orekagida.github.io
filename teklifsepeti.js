@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openQuoteFormBtn.addEventListener('click', () => {
             if (quoteFormArea.style.display === 'none' || quoteFormArea.style.display === '') {
                 quoteFormArea.style.display = 'block';
-                openQuoteFormBtn.style.display = 'none'; // Butonu gizleyip form içindeki butonu aktif bırakabiliriz
+                openQuoteFormBtn.style.display = 'none';
             }
         });
     }
@@ -22,13 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const companyName = document.getElementById('companyName').value;
             const fullName = document.getElementById('fullName').value;
-            const phone = document.getElementById('phone').value;
-            const notes = document.getElementById('notes').value;
 
-            // Burada verileri işleyebilir veya WhatsApp/Mail yönlendirmesi yapabilirsiniz
             alert(`Sayın ${fullName} (${companyName}), teklif talebiniz başarıyla alınmıştır. 24 saat içinde sizinle iletişime geçilecektir.`);
             
-            // Sepeti temizle ve ana sayfaya dön
             localStorage.removeItem('orekaCart');
             window.location.href = 'index.html';
         });

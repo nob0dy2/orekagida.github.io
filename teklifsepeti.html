@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teklif Sepeti - Oreka Gıda</title>
+    <link rel="icon" href="orekalogo.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="teklifsepeti.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navigasyon (Aynı Şekilde Korundu) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html#baslangic" class="logo">
+                <img src="orekalogo.png" alt="Oreka Gıda Logo" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#hakkimizda">Hakkımızda</a></li>
+                <li><a href="index.html#neden-oreka">Neden Oreka?</a></li>
+                <li><a href="index.html#referanslar">Referanslar</a></li>
+                <li><a href="urunlerimiz.html">Ürünlerimiz</a></li>
+                <li><a href="index.html#iletisim">İletişim</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="teklifsepeti.html" class="cart-icon" title="Teklif Sepeti" style="background-color: #e67e22;">
+                    <span class="cart-text">Sepet</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-badge" id="navCartBadge">0</span>
+                </a>
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- TEKLİF SEPETİ TASARIMI -->
+    <main class="quote-page">
+        <!-- Turuncu Üst Alan (Hero) -->
+        <div class="quote-hero">
+            <div class="container quote-hero-container">
+                <a href="urunlerimiz.html" class="back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Ürünlere Dön
+                </a>
+                
+                <div class="hero-title-area">
+                    <div class="hero-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </div>
+                    <div class="hero-text">
+                        <span class="hero-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> TEKLİF SEPETİ</span>
+                        <h1>Teklif Sepetim</h1>
+                        <p>Sepetinizde <span id="hero-item-count">0</span> ürün var. En iyi teklifi almak için hemen başvurun.</p>
+                    </div>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        <div class="stat-info">
+                            <span class="stat-label">Toplam Çeşit</span>
+                            <span class="stat-val" id="statTotalTypes">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v5s3-2 3-5m-3-5V5m0 5c-3 0-5 2-5 5h10c0-3-2-5-5-5z"/></svg>
+                        <div class="stat-info">
+                            <span class="stat-label">Toplam Adet</span>
+                            <span class="stat-val" id="statTotalQty">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <div class="stat-info">
+                            <span class="stat-label">Cevap Süresi</span>
+                            <span class="stat-val">24 Saat</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alt İçerik Alanı (Grid Layout) -->
+        <div class="container quote-content-layout">
+            
+            <!-- Sol Taraf: Sepet Ürünleri -->
+            <div class="cart-items-section">
+                <div id="cartItemsContainer" class="cart-items-list">
+                    <!-- Javascript ile Ürünler Buraya Eklenecek -->
+                </div>
+                
+                <div class="cart-actions" id="cartActionsPanel" style="display: none;">
+                    <button id="clearCartBtn" class="clear-cart-btn">Sepeti Temizle</button>
+                </div>
+
+                <!-- Sepet Boş Durumu -->
+                <div id="emptyCartMessage" class="empty-cart" style="display: none;">
+                    <h3>Sepetinizde ürün bulunmamaktadır.</h3>
+                    <p>Hemen ürünlerimizi inceleyip sepetinize ekleyebilirsiniz.</p>
+                </div>
+            </div>
+
+            <!-- Sağ Taraf: Sipariş Özeti -->
+            <div class="cart-summary-section">
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e67e22" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <span>SİPARİŞ ÖZETİ</span>
+                    </div>
+                    <h2>Özet</h2>
+                    
+                    <div class="summary-row">
+                        <span>Toplam Çeşit</span>
+                        <strong id="summaryTotalTypes">0</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Toplam Adet</span>
+                        <strong id="summaryTotalQty">0</strong>
+                    </div>
+
+                    <div class="trust-badges">
+                        <div class="badge-item badge-green">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <div>
+                                <strong>Hızlı Teklif</strong>
+                                <span>24 saat içinde dönüş garantisi</span>
+                            </div>
+                        </div>
+                        <div class="badge-item badge-blue">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <div>
+                                <strong>Güvenli İşlem</strong>
+                                <span>Kişisel verileriniz korunur</span>
+                            </div>
+                        </div>
+                        <div class="badge-item badge-purple">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                            <div>
+                                <strong>Özel Fiyatlandırma</strong>
+                                <span>Size özel kampanyalı fiyat</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Teklif Gönder Butonu - Formu Açar -->
+                    <button class="submit-quote-btn" id="openQuoteFormBtn">Teklif Gönder &rarr;</button>
+
+                    <!-- Gizli Form Alanı -->
+                    <div id="quoteFormArea" class="quote-form-area" style="display: none;">
+                        <hr>
+                        <h4>İletişim Bilgileri</h4>
+                        <form id="quoteRequestForm">
+                            <input type="text" id="companyName" placeholder="Firma Adı / Unvanı" required>
+                            <input type="text" id="fullName" placeholder="Adınız Soyadınız" required>
+                            <input type="tel" id="phone" placeholder="Telefon Numarası" required>
+                            <textarea id="notes" rows="2" placeholder="Notlarınız (İsteğe Bağlı)"></textarea>
+                            <button type="submit" class="submit-quote-btn final-submit">Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (Aynı Şekilde Korundu) -->
+    <footer id="iletisim" class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>OREKA GIDA</h3>
+                <p><strong>Ofis:</strong> Kocatepe Mah. 32. Sk. No:30/A, Bayrampaşa/İstanbul</p>
+                <p><strong>Depo:</strong> Kocatepe Mah. Yemiş Meydanı Sk. Mega Center C Bloklar No: 1 İç Kapı No: 417, Bayrampaşa/İstanbul</p>
+            </div>
+            <div class="footer-contact">
+                <h3>İletişim</h3>
+                <p><strong>Yetkili Kişi:</strong> Belya Kale</p>
+                <p><strong>Telefon:</strong> +90 537 391 28 49</p>
+                <p><strong>E-posta:</strong> orekagida@gmail.com | info@orekagıda.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Oreka Gıda. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="teklifsepeti.js"></script>
+</body>
+</html>

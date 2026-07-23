@@ -1,36 +1,4 @@
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-pulse {
-  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Teklif Sepeti Sayfa Tasarımı */
+/* --- TEKLİF SEPETİ SAYFA TASARIMI --- */
 .quote-page {
     background-color: #f8f9fa;
     min-height: 80vh;
@@ -552,5 +520,3 @@
         justify-content: space-between;
     }
 }
-
-.cls-1 { fill: #858e99; }

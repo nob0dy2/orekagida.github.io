@@ -28,16 +28,13 @@
             <!-- Sağ Üst: Sepet ve Menü Butonu -->
             <div class="nav-right">
                 <a href="teklifsepeti.html" class="cart-icon" title="Teklif Sepeti">
-                    <!-- Sepet Yazısı -->
                     <span class="cart-text">Sepet</span>
-                    <!-- SVG Sepet İkonu -->
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
-                    <!-- Sepetteki Ürün Sayısı -->
-                    <span class="cart-badge">0</span>
+                    <span class="cart-badge" id="navCartBadge">0</span>
                 </a>
 
                 <div class="hamburger">
@@ -53,8 +50,9 @@
     <header class="hero" id="baslangic">
         <div class="hero-slides">
             
+            <!-- Arkaplan karartmaları (linear-gradient gri tonları) kaldırıldı -->
             <div class="slide active">
-                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/bakliyat-ezremove.png');"></div>
+                <div class="slide-bg" style="background-image: url('carousel/bakliyat-ezremove.png');"></div>
                 <div class="slide-content">
                     <h1>OREKA GIDA</h1>
                     <h2>KURU BAKLİYAT</h2>
@@ -64,7 +62,7 @@
             </div>
 
             <div class="slide">
-                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/sarküteri.png');"></div>
+                <div class="slide-bg" style="background-image: url('carousel/sarküteri.png');"></div>
                 <div class="slide-content">
                     <h1>OREKA GIDA</h1>
                     <h2>ŞARKÜTERİ</h2>
@@ -74,7 +72,7 @@
             </div>
 
             <div class="slide">
-                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/donuk.png');"></div>
+                <div class="slide-bg" style="background-image: url('carousel/donuk.png');"></div>
                 <div class="slide-content">
                     <h1>OREKA GIDA</h1>
                     <h2>DONUK ÜRÜNLER</h2>
@@ -84,7 +82,7 @@
             </div>
 
             <div class="slide">
-                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/ambalajli.png');"></div>
+                <div class="slide-bg" style="background-image: url('carousel/ambalajli.png');"></div>
                 <div class="slide-content">
                     <h1>OREKA GIDA</h1>
                     <h2>AMBALAJLI ÜRÜNLER</h2>
@@ -94,7 +92,7 @@
             </div>
 
             <div class="slide">
-                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/temizlik.png');"></div>
+                <div class="slide-bg" style="background-image: url('carousel/temizlik.png');"></div>
                 <div class="slide-content">
                     <h1>OREKA GIDA</h1>
                     <h2>TEMİZLİK MALZEMELERİ</h2>
@@ -104,7 +102,7 @@
             </div>
 
             <div class="slide">
-                <div class="slide-bg" style="background-image: linear-gradient(rgba(44, 62, 80, 0.3), rgba(44, 62, 80, 0.5)), url('carousel/sebze.png');"></div>
+                <div class="slide-bg" style="background-image: url('carousel/sebze.png');"></div>
                 <div class="slide-content">
                     <h1>OREKA GIDA</h1>
                     <h2>SEBZE VE MEYVE</h2>

@@ -47,7 +47,7 @@ body {
     margin: 10px auto 0; 
 }
 
-/* Navigasyon - Tam okunabilirlik için yüksek opaklık */
+/* Navigasyon */
 .navbar { 
     position: fixed; 
     top: 0; 
@@ -95,7 +95,6 @@ body {
     gap: 20px; 
 }
 
-/* Sepet İkonu (Tuş/Buton Tasarımı) */
 .cart-icon {
     position: relative;
     background-color: #f39c12;
@@ -110,13 +109,11 @@ body {
     transition: all 0.2s ease;
 }
 
-/* Sepet Yazısı */
 .cart-text {
     font-weight: 600;
     font-size: 16px;
 }
 
-/* Fareyle Üzerine Gelince (Hover) Efekti */
 .cart-icon:hover {
     background-color: #e67e22;
     box-shadow: 0 6px 12px rgba(243, 156, 18, 0.4);
@@ -124,13 +121,11 @@ body {
     color: #fff;
 }
 
-/* Tıklanma (Basılma) Efekti - Tuşa Basma Hissi */
 .cart-icon:active {
     transform: translateY(2px) scale(0.98);
     box-shadow: 0 2px 3px rgba(243, 156, 18, 0.3);
 }
 
-/* Sepet Bildirim Rozeti (Sayı) */
 .cart-badge {
     position: absolute;
     top: -8px;
@@ -148,7 +143,6 @@ body {
     border: 2px solid #fff;
 }
 
-/* Hamburger Menü */
 .hamburger { 
     display: none; 
     cursor: pointer; 
@@ -163,7 +157,7 @@ body {
     transition: 0.3s; 
 }
 
-/* Carousel (Slider) - Fade Geçiş Efekti */
+/* Carousel (Slider) - Fade Geçiş Efekti Kapatıldı */
 .hero { 
     position: relative; 
     height: 100vh; 
@@ -183,13 +177,12 @@ body {
     left: 0; 
     width: 100%; 
     height: 100%; 
-    opacity: 0; 
-    transition: opacity 0.8s ease-in-out; 
+    display: none; /* Transition iptal edildi, direkt görüntüleme. */
     z-index: 1; 
 }
 
 .slide.active { 
-    opacity: 1; 
+    display: block; 
     z-index: 2; 
 }
 
@@ -404,7 +397,7 @@ body {
         left: -100%; 
         width: 100vw; 
         height: 100vh; 
-        background-color: #ffffff; 
+        background-color: #ffffff; /* Transparanlık okunabilirlik için sabit (#fff) tutuldu */
         flex-direction: column; 
         justify-content: center; 
         align-items: center; 

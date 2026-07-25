@@ -15,16 +15,16 @@
     padding-bottom: 60px;
 }
 
-/* Turuncu Hero Alanı */
+/* Turuncu Hero Alanı (İçeriği biraz daha aşağı kaydırmak için üst boşluk artırıldı) */
 .quote-hero {
     background: linear-gradient(135deg, #f39c12 0%, #e67e22 50%, #d35400 100%);
     color: #fff;
-    height: 500px;
+    height: 580px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 40px;
+    padding: 110px 40px 0 40px;
     box-shadow: 0 4px 20px rgba(230, 126, 34, 0.25);
     position: relative;
     overflow: hidden;
@@ -186,10 +186,21 @@
 }
 
 @media (max-width: 992px) {
-    .quote-hero { height: auto; padding: 40px 20px; }
-    .quote-content-layout { grid-template-columns: 1fr; margin-top: 30px; }
-    .hero-stats { grid-template-columns: 1fr; }
-    .hero-title-area { flex-direction: column; align-items: flex-start; }
+    .quote-hero { 
+        height: auto; 
+        padding: 100px 20px 40px 20px; 
+    }
+    .quote-content-layout { 
+        grid-template-columns: 1fr; 
+        margin-top: 30px; 
+    }
+    .hero-stats { 
+        grid-template-columns: 1fr; 
+    }
+    .hero-title-area { 
+        flex-direction: column; 
+        align-items: flex-start; 
+    }
 }
 
 /* Sol Taraf: Sepet Ürün Listesi */

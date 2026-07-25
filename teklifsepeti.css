@@ -15,16 +15,16 @@
     padding-bottom: 60px;
 }
 
-/* Turuncu Hero Alanı (İçeriği biraz daha aşağı kaydırmak için üst boşluk artırıldı) */
+/* Turuncu Hero Alanı (Mobil menü çakışmalarını önlemek için üst boşluk artırıldı) */
 .quote-hero {
     background: linear-gradient(135deg, #f39c12 0%, #e67e22 50%, #d35400 100%);
     color: #fff;
-    height: 580px;
+    height: 640px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 110px 40px 0 40px;
+    padding: 140px 40px 20px 40px;
     box-shadow: 0 4px 20px rgba(230, 126, 34, 0.25);
     position: relative;
     overflow: hidden;
@@ -54,6 +54,8 @@
     font-weight: 500;
     width: fit-content;
     transition: all 0.3s ease;
+    position: relative; /* Menü çakışmalarını önler */
+    z-index: 10;        /* Her zaman en üstte kalmasını sağlar */
 }
 
 .back-btn:hover {
@@ -188,7 +190,7 @@
 @media (max-width: 992px) {
     .quote-hero { 
         height: auto; 
-        padding: 100px 20px 40px 20px; 
+        padding: 130px 20px 40px 20px; /* Mobil cihazlar için üst boşluk ekstra artırıldı */
     }
     .quote-content-layout { 
         grid-template-columns: 1fr; 

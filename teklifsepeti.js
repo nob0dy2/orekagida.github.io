@@ -50,7 +50,10 @@ function loadCartPageData() {
     const cartItemsContainer = document.getElementById('cartItemsContainer');
     const emptyCartMessage = document.getElementById('emptyCartMessage');
     const cartActionsPanel = document.getElementById('cartActionsPanel');
-    const heroItemCount = document.getElementById('hero-item-count');
+    const cartSummarySection = document.querySelector('.cart-summary-section');
+    const quoteContentLayout = document.querySelector('.quote-content-layout');
+    const heroStats = document.querySelector('.hero-stats');
+    const heroDescription = document.querySelector('.hero-text p');
     const statTotalTypes = document.getElementById('statTotalTypes');
     const statTotalQty = document.getElementById('statTotalQty');
     const summaryTotalTypes = document.getElementById('summaryTotalTypes');
@@ -60,8 +63,11 @@ function loadCartPageData() {
         cartItemsContainer.innerHTML = '';
         emptyCartMessage.style.display = 'block';
         if (cartActionsPanel) cartActionsPanel.style.display = 'none';
+        if (cartSummarySection) cartSummarySection.style.display = 'none';
+        if (quoteContentLayout) quoteContentLayout.classList.add('empty-cart-layout'); // Tam genişliğe yay
+        if (heroStats) heroStats.style.display = 'none';
+        if (heroDescription) heroDescription.innerText = 'Sepetiniz boş. Premium ürünlerimizi keşfedin.';
         
-        if (heroItemCount) heroItemCount.innerText = '0';
         if (statTotalTypes) statTotalTypes.innerText = '0';
         if (statTotalQty) statTotalQty.innerText = '0';
         if (summaryTotalTypes) summaryTotalTypes.innerText = '0';
@@ -71,11 +77,14 @@ function loadCartPageData() {
 
     emptyCartMessage.style.display = 'none';
     if (cartActionsPanel) cartActionsPanel.style.display = 'block';
+    if (cartSummarySection) cartSummarySection.style.display = 'block';
+    if (quoteContentLayout) quoteContentLayout.classList.remove('empty-cart-layout'); // 2 sütunlu yapıya dön
+    if (heroStats) heroStats.style.display = 'grid';
 
     let totalTypes = cart.length;
     let totalQty = cart.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
 
-    if (heroItemCount) heroItemCount.innerText = totalQty;
+    if (heroDescription) heroDescription.innerHTML = `Sepetinizde <span id="hero-item-count">${totalQty}</span> ürün var. En iyi teklifi almak için hemen başvurun.`;
     if (statTotalTypes) statTotalTypes.innerText = totalTypes;
     if (statTotalQty) statTotalQty.innerText = totalQty;
     if (summaryTotalTypes) summaryTotalTypes.innerText = totalTypes;

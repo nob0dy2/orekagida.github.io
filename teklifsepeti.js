@@ -39,17 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. AŞAMA: Form Gönderimi (Safari/iOS Dostu Mailto ve Yönlendirme)
+    // 2. AŞAMA: Web3Forms API ile HTML E-Posta Gönderimi
     const finalQuoteForm = document.getElementById('finalQuoteForm');
     if (finalQuoteForm) {
-        finalQuoteForm.addEventListener('submit', (e) => {
+        finalQuoteForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const fullName = document.getElementById('chkFullName').value.trim();
             const companyName = document.getElementById('chkCompanyName').value.trim() || 'Belirtilmedi';
             const email = document.getElementById('chkEmail').value.trim();
             const phone = document.getElementById('chkPhone').value;
-            const notes = document.getElementById('chkNotes').value.trim();
+            const notes = document.getElementById('chkNotes').value.trim() || 'Yok';
 
             if (!fullName.includes(' ')) {
                 alert('Lütfen adınızı ve soyadınızı boşluk bırakarak tam giriniz.');
@@ -63,29 +63,115 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             let cart = JSON.parse(localStorage.getItem('orekaCart')) || [];
-            let cartDetails = cart.map(item => `- ${item.name} (Adet: ${item.quantity || 1})`).join('\n');
+            
+            // Ürünler Tablosu (HTML Mail İçin)
+            let cartTableRows = cart.map(item => `
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid #f1f5f9; color: #334155;">${item.name}</td>
+                    <td align="right" style="padding: 10px; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #ea580c;">${item.quantity || 1} Adet</td>
+                </tr>
+            `).join('');
 
-            const mailToAddress = 'rugownpat@send4.uk';
-            const mailSubject = encodeURIComponent(`${fullName} - Yeni Teklif Talebi`);
-            const mailBody = encodeURIComponent(
-                `Firma Adı: ${companyName}\n` +
-                `Ad Soyad: ${fullName}\n` +
-                `E-posta: ${email}\n` +
-                `Telefon: ${phone}\n` +
-                `Notlar: ${notes}\n\n` +
-                `--- SEPETTEKİ ÜRÜNLER ---\n${cartDetails}`
-            );
+            // TRENDYOL / KURUMSAL STİLİNDE HTML MAIL ŞABLONU
+            const htmlMessage = `
+            <!DOCTYPE html>
+            <html lang="tr">
+            <head><meta charset="UTF-8"></head>
+            <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: Arial, sans-serif;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; background-color: #ffffff; margin-top: 20px; margin-bottom: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                    
+                    <!-- HEADER / LOGO -->
+                    <tr>
+                        <td align="center" bgcolor="#ea580c" style="padding: 30px 20px;">
+                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 800; letter-spacing: 1px;">OREKA GIDA</h1>
+                            <p style="color: #ffedd5; margin: 6px 0 0 0; font-size: 13px; font-weight: bold;">WEB TEKLİF BİLDİRİMİ</p>
+                        </td>
+                    </tr>
 
-            // Mail uygulamasını tetikle
-            window.location.href = `mailto:${mailToAddress}?subject=${mailSubject}&body=${mailBody}`;
+                    <!-- İÇERİK -->
+                    <tr>
+                        <td style="padding: 30px; background-color: #fff7ed;">
+                            <h2 style="color: #ea580c; margin: 0 0 15px 0; font-size: 20px; border-bottom: 2px solid #fed7aa; padding-bottom: 8px;">MÜŞTERİ BİLGİLERİ</h2>
+                            
+                            <table width="100%" cellpadding="10" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; border: 1px solid #fed7aa; margin-bottom: 25px; font-size: 13px; color: #334155;">
+                                <tr>
+                                    <td><strong>Ad Soyad:</strong> ${fullName}</td>
+                                    <td><strong>Firma Adı:</strong> ${companyName}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>E-posta:</strong> ${email}</td>
+                                    <td><strong>Telefon:</strong> ${phone}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><strong>Notlar:</strong> ${notes}</td>
+                                </tr>
+                            </table>
 
-            // Sepeti temizle
-            localStorage.removeItem('orekaCart');
+                            <h2 style="color: #ea580c; margin: 0 0 15px 0; font-size: 20px; border-bottom: 2px solid #fed7aa; padding-bottom: 8px;">SEPETTEKİ ÜRÜNLER</h2>
+                            
+                            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 13px;">
+                                <tr bgcolor="#f8fafc" style="color: #64748b; font-size: 12px; text-transform: uppercase;">
+                                    <th align="left" style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Ürün Adı</th>
+                                    <th align="right" style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Adet</th>
+                                </tr>
+                                ${cartTableRows}
+                            </table>
+                        </td>
+                    </tr>
 
-            // Safari ertelemesi ile anasayfaya dön
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 500);
+                    <!-- FOOTER -->
+                    <tr>
+                        <td align="center" bgcolor="#ea580c" style="padding: 20px; color: #ffffff; font-size: 12px;">
+                            <p style="margin: 0 0 4px 0; font-weight: bold;">OREKA GIDA SAN. TİC. LTD. ŞTİ.</p>
+                            <p style="margin: 0; opacity: 0.85;">Kocatepe Mah. Mega Center, Bayrampaşa / İstanbul</p>
+                        </td>
+                    </tr>
+                </table>
+            </body>
+            </html>
+            `;
+
+            // Form Butonunu Yükleniyor Durumuna Getir
+            const submitBtn = finalQuoteForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Gönderiliyor...';
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        access_key: '1ca901c4-718b-4733-8e1c-52b7094ae799',
+                        subject: `Yeni Teklif Talebi: ${fullName}`,
+                        from_name: 'Oreka Gıda Web',
+                        replyto: email,
+                        message: htmlMessage
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`Sayın ${fullName}, teklif talebiniz başarıyla bize iletildi. En kısa sürede sizinle iletişime geçeceğiz.`);
+                    
+                    // Sepeti sıfırla ve anasayfaya dön
+                    localStorage.removeItem('orekaCart');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Bir hata oluştu. Lütfen tekrar deneyiniz.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }
+            } catch (error) {
+                console.error('Hata:', error);
+                alert('Bağlantı hatası oluştu. Lütfen tekrar deneyiniz.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
         });
     }
 
@@ -146,14 +232,14 @@ function loadCartPageData() {
         emptyCartMessage.style.display = 'block';
         if (cartActionsPanel) cartActionsPanel.style.display = 'none';
         if (cartSummarySection) cartSummarySection.style.display = 'none';
-        if (heroStats) heroStats.style.display = 'none'; // Boşsa gizle
+        if (heroStats) heroStats.style.display = 'none';
         return;
     }
 
     emptyCartMessage.style.display = 'none';
     if (cartActionsPanel) cartActionsPanel.style.display = 'block';
     if (cartSummarySection) cartSummarySection.style.display = 'block';
-    if (heroStats) heroStats.style.display = 'flex'; // Doluysa göster
+    if (heroStats) heroStats.style.display = 'flex';
 
     let totalTypes = cart.length;
     let totalQty = cart.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);

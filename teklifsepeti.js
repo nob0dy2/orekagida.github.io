@@ -89,14 +89,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 `--- SEPETTEKİ ÜRÜNLER ---\n${cartDetails}`
             );
 
-            // Kullanıcıyı mail uygulamasına yönlendir
+            // 1. Önce Mail uygulamasını tetikle
             window.location.href = `mailto:${mailToAddress}?subject=${mailSubject}&body=${mailBody}`;
 
-            alert(`Sayın ${fullName}, teklif talebiniz e-posta uygulamanıza aktarıldı. Lütfen açılan uygulamadan e-postayı göndermeyi unutmayın.`);
-            
-            // Sepeti sıfırlayıp anasayfaya dön
-            localStorage.removeItem('orekaCart');
-            window.location.href = 'index.html';
+            // 2. iOS Safari'nin mail uygulamasını açabilmesi için gecikme (Timeout) ekle
+            setTimeout(() => {
+                alert(`Sayın ${fullName}, teklif talebiniz e-posta uygulamanıza aktarıldı. Lütfen açılan uygulamadan e-postayı göndermeyi unutmayın.`);
+                
+                // Sepeti sıfırlayıp anasayfaya dön
+                localStorage.removeItem('orekaCart');
+                window.location.href = 'index.html';
+            }, 1500);
         });
     }
 

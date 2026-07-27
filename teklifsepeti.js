@@ -74,61 +74,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // TRENDYOL / KURUMSAL STİLİNDE HTML MAIL ŞABLONU
             const htmlMessage = `
-            <!DOCTYPE html>
-            <html lang="tr">
-            <head><meta charset="UTF-8"></head>
-            <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: Arial, sans-serif;">
-                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; background-color: #ffffff; margin-top: 20px; margin-bottom: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-                    
-                    <!-- HEADER / LOGO -->
-                    <tr>
-                        <td align="center" bgcolor="#ea580c" style="padding: 30px 20px;">
-                            <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 800; letter-spacing: 1px;">OREKA GIDA</h1>
-                            <p style="color: #ffedd5; margin: 6px 0 0 0; font-size: 13px; font-weight: bold;">WEB TEKLİF BİLDİRİMİ</p>
-                        </td>
-                    </tr>
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; border-collapse: collapse; background-color: #ffffff; margin-top: 10px; margin-bottom: 10px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-family: Arial, sans-serif;">
+                
+                <!-- HEADER / LOGO -->
+                <tr>
+                    <td align="center" bgcolor="#ea580c" style="padding: 25px 20px;">
+                        <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800; letter-spacing: 1px;">OREKA GIDA</h1>
+                        <p style="color: #ffedd5; margin: 5px 0 0 0; font-size: 12px; font-weight: bold;">WEB TEKLİF BİLDİRİMİ</p>
+                    </td>
+                </tr>
 
-                    <!-- İÇERİK -->
-                    <tr>
-                        <td style="padding: 30px; background-color: #fff7ed;">
-                            <h2 style="color: #ea580c; margin: 0 0 15px 0; font-size: 20px; border-bottom: 2px solid #fed7aa; padding-bottom: 8px;">MÜŞTERİ BİLGİLERİ</h2>
-                            
-                            <table width="100%" cellpadding="10" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; border: 1px solid #fed7aa; margin-bottom: 25px; font-size: 13px; color: #334155;">
-                                <tr>
-                                    <td><strong>Ad Soyad:</strong> ${fullName}</td>
-                                    <td><strong>Firma Adı:</strong> ${companyName}</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>E-posta:</strong> ${email}</td>
-                                    <td><strong>Telefon:</strong> ${phone}</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><strong>Notlar:</strong> ${notes}</td>
-                                </tr>
-                            </table>
+                <!-- İÇERİK -->
+                <tr>
+                    <td style="padding: 25px; background-color: #fff7ed;">
+                        <h2 style="color: #ea580c; margin: 0 0 12px 0; font-size: 18px; border-bottom: 2px solid #fed7aa; padding-bottom: 6px;">MÜŞTERİ BİLGİLERİ</h2>
+                        
+                        <table width="100%" cellpadding="8" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; border: 1px solid #fed7aa; margin-bottom: 20px; font-size: 13px; color: #334155;">
+                            <tr>
+                                <td><strong>Ad Soyad:</strong> ${fullName}</td>
+                                <td><strong>Firma Adı:</strong> ${companyName}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>E-posta:</strong> ${email}</td>
+                                <td><strong>Telefon:</strong> ${phone}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><strong>Notlar:</strong> ${notes}</td>
+                            </tr>
+                        </table>
 
-                            <h2 style="color: #ea580c; margin: 0 0 15px 0; font-size: 20px; border-bottom: 2px solid #fed7aa; padding-bottom: 8px;">SEPETTEKİ ÜRÜNLER</h2>
-                            
-                            <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 13px;">
-                                <tr bgcolor="#f8fafc" style="color: #64748b; font-size: 12px; text-transform: uppercase;">
-                                    <th align="left" style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Ürün Adı</th>
-                                    <th align="right" style="padding: 10px; border-bottom: 1px solid #e2e8f0;">Adet</th>
-                                </tr>
-                                ${cartTableRows}
-                            </table>
-                        </td>
-                    </tr>
+                        <h2 style="color: #ea580c; margin: 0 0 12px 0; font-size: 18px; border-bottom: 2px solid #fed7aa; padding-bottom: 6px;">SEPETTEKİ ÜRÜNLER</h2>
+                        
+                        <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 13px;">
+                            <tr bgcolor="#f8fafc" style="color: #64748b; font-size: 11px; text-transform: uppercase;">
+                                <th align="left" style="padding: 8px 10px; border-bottom: 1px solid #e2e8f0;">Ürün Adı</th>
+                                <th align="right" style="padding: 8px 10px; border-bottom: 1px solid #e2e8f0;">Adet</th>
+                            </tr>
+                            ${cartTableRows}
+                        </table>
+                    </td>
+                </tr>
 
-                    <!-- FOOTER -->
-                    <tr>
-                        <td align="center" bgcolor="#ea580c" style="padding: 20px; color: #ffffff; font-size: 12px;">
-                            <p style="margin: 0 0 4px 0; font-weight: bold;">OREKA GIDA SAN. TİC. LTD. ŞTİ.</p>
-                            <p style="margin: 0; opacity: 0.85;">Kocatepe Mah. Mega Center, Bayrampaşa / İstanbul</p>
-                        </td>
-                    </tr>
-                </table>
-            </body>
-            </html>
+                <!-- FOOTER -->
+                <tr>
+                    <td align="center" bgcolor="#ea580c" style="padding: 15px; color: #ffffff; font-size: 11px;">
+                        <p style="margin: 0 0 3px 0; font-weight: bold;">OREKA GIDA SAN. TİC. LTD. ŞTİ.</p>
+                        <p style="margin: 0; opacity: 0.85;">Kocatepe Mah. Mega Center, Bayrampaşa / İstanbul</p>
+                    </td>
+                </tr>
+            </table>
             `;
 
             // Form Butonunu Yükleniyor Durumuna Getir
@@ -149,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         subject: `Yeni Teklif Talebi: ${fullName}`,
                         from_name: 'Oreka Gıda Web',
                         replyto: email,
+                        // Web3Forms'un HTML maillere özel alan parametreleri:
+                        is_html: 'true',
                         message: htmlMessage
                     })
                 });

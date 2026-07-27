@@ -1,37 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadCartPageData();
 
-    // 1. AŞAMA: Teklif Gönder Butonu ile Yeni Tasarımı Açma
+    // 1. AŞAMA: Form Görünümüne Geçiş
     const openQuoteFormBtn = document.getElementById('openQuoteFormBtn');
     const cartViewLayout = document.getElementById('cartViewLayout');
     const checkoutViewLayout = document.getElementById('checkoutViewLayout');
 
     if (openQuoteFormBtn) {
         openQuoteFormBtn.addEventListener('click', () => {
-            // Sepet boşsa geçişi engelle
             let cart = JSON.parse(localStorage.getItem('orekaCart')) || [];
             if (cart.length === 0) {
                 alert('Sepetiniz boş. Lütfen önce ürün ekleyin.');
                 return;
             }
 
-            // Standart görünümü gizle, checkout görünümünü aç
             cartViewLayout.style.display = 'none';
             checkoutViewLayout.style.display = 'grid';
 
-            // Yeni sağ taraftaki mini sepeti doldur
             renderCheckoutMiniCart(cart);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
-    // Telefon Numarası Format Kontrolü (+90 ve maksimum 10 rakam zorunluluğu)
+    // Telefon Format ZORUNLULUĞU (+90)
     const phoneInput = document.getElementById('chkPhone');
     if (phoneInput) {
         phoneInput.addEventListener('input', function() {
-            if (!this.value.startsWith('+90')) {
-                this.value = '+90';
-            }
+            if (!this.value.startsWith('+90')) { this.value = '+90'; }
             let digits = this.value.substring(3).replace(/[^0-9]/g, '');
             if (digits.length > 10) { digits = digits.substring(0, 10); }
             this.value = '+90' + digits;
@@ -44,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. AŞAMA: Form Gönderimi (Final Submit) ve Mailto Yönlendirmesi
+    // 2. AŞAMA: Form Gönderimi (Safari/iOS Dostu Mailto ve Yönlendirme)
     const finalQuoteForm = document.getElementById('finalQuoteForm');
     if (finalQuoteForm) {
         finalQuoteForm.addEventListener('submit', (e) => {
@@ -56,28 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const phone = document.getElementById('chkPhone').value;
             const notes = document.getElementById('chkNotes').value.trim();
 
-            // --- DOĞRULAMA (VALIDATION) KONTROLLERİ ---
-            
-            // Ad ve Soyad arasında boşluk kontrolü
             if (!fullName.includes(' ')) {
-                alert('Lütfen adınızı ve soyadınızı aralarında bir boşluk bırakarak tam olarak giriniz.');
+                alert('Lütfen adınızı ve soyadınızı boşluk bırakarak tam giriniz.');
                 return; 
             }
 
-            // Telefon numarasının tam 10 hane olup olmadığını kontrol et (+90 hariç)
             const phoneDigits = phone.substring(3).replace(/[^0-9]/g, '');
             if (phoneDigits.length < 10) {
-                alert('Lütfen telefon numaranızı eksiksiz (10 rakam) giriniz.');
+                alert('Lütfen telefon numaranızı eksiksiz (10 hane) giriniz.');
                 return; 
             }
 
-            // ------------------------------------------
-
-            // Sepetteki ürünleri al
             let cart = JSON.parse(localStorage.getItem('orekaCart')) || [];
             let cartDetails = cart.map(item => `- ${item.name} (Adet: ${item.quantity || 1})`).join('\n');
 
-            // Mailto yönlendirmesi için verileri hazırla
             const mailToAddress = 'rugownpat@send4.uk';
             const mailSubject = encodeURIComponent(`${fullName} - Yeni Teklif Talebi`);
             const mailBody = encodeURIComponent(
@@ -89,25 +76,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 `--- SEPETTEKİ ÜRÜNLER ---\n${cartDetails}`
             );
 
-            // 1. Önce Mail uygulamasını tetikle
+            // Mail uygulamasını tetikle
             window.location.href = `mailto:${mailToAddress}?subject=${mailSubject}&body=${mailBody}`;
 
-            // 2. iOS Safari'nin mail uygulamasını açabilmesi için gecikme (Timeout) ekle
+            // Sepeti temizle
+            localStorage.removeItem('orekaCart');
+
+            // Safari ertelemesi ile anasayfaya dön
             setTimeout(() => {
-                alert(`Sayın ${fullName}, teklif talebiniz e-posta uygulamanıza aktarıldı. Lütfen açılan uygulamadan e-postayı göndermeyi unutmayın.`);
-                
-                // Sepeti sıfırlayıp anasayfaya dön
-                localStorage.removeItem('orekaCart');
                 window.location.href = 'index.html';
-            }, 1500);
+            }, 500);
         });
     }
 
-    // Sepeti Temizle Butonu
+    // Sepeti Temizle
     const clearCartBtn = document.getElementById('clearCartBtn');
     if (clearCartBtn) {
         clearCartBtn.addEventListener('click', () => {
-            if (confirm('Teklif sepetinizi tamamen boşaltmak istediğinize emin misiniz?')) {
+            if (confirm('Sepet boşaltılsın mı?')) {
                 localStorage.removeItem('orekaCart');
                 loadCartPageData();
                 updateNavBadge();
@@ -116,18 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Yeni Checkout Tasarımındaki Mini Sepeti Çizme Fonksiyonu
 function renderCheckoutMiniCart(cart) {
     const miniCartContainer = document.getElementById('checkoutMiniCart');
     const chkTotalTypesVal = document.getElementById('chkTotalTypesVal');
     const chkTotalQtyVal = document.getElementById('chkTotalQtyVal');
 
     miniCartContainer.innerHTML = '';
-
-    let totalTypes = cart.length;
     let totalQty = cart.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
 
-    chkTotalTypesVal.innerText = totalTypes;
+    chkTotalTypesVal.innerText = cart.length;
     chkTotalQtyVal.innerText = totalQty;
 
     cart.forEach(item => {
@@ -135,7 +118,7 @@ function renderCheckoutMiniCart(cart) {
         div.className = 'mc-item';
         div.innerHTML = `
             <img src="${item.image || 'orekalogo.png'}" class="mc-img" alt="${item.name}">
-            <div class="mc-details">
+            <div>
                 <p class="mc-name">${item.name}</p>
                 <span class="mc-qty">Adet: ${item.quantity || 1}</span>
             </div>
@@ -144,7 +127,6 @@ function renderCheckoutMiniCart(cart) {
     });
 }
 
-// Orijinal Sepet Verilerini Sayfaya Yükleme
 function loadCartPageData() {
     let cart = JSON.parse(localStorage.getItem('orekaCart')) || [];
     
@@ -152,42 +134,30 @@ function loadCartPageData() {
     const emptyCartMessage = document.getElementById('emptyCartMessage');
     const cartActionsPanel = document.getElementById('cartActionsPanel');
     const cartSummarySection = document.querySelector('.cart-summary-section');
+    const heroStats = document.querySelector('.hero-stats');
     
-    // Değerleri yazdığımız yerler (Hero & Sağ Özet)
     const statTotalTypes = document.getElementById('statTotalTypes');
     const statTotalQty = document.getElementById('statTotalQty');
     const summaryTotalTypes = document.getElementById('summaryTotalTypes');
     const summaryTotalQty = document.getElementById('summaryTotalQty');
-    const heroDescription = document.querySelector('.hero-text p');
-
-    // Checkout form açıksa ve sepet boşaltılmışsa geriye dön
-    const cartViewLayout = document.getElementById('cartViewLayout');
-    const checkoutViewLayout = document.getElementById('checkoutViewLayout');
-    if (cart.length === 0 && checkoutViewLayout && checkoutViewLayout.style.display === 'grid') {
-        checkoutViewLayout.style.display = 'none';
-        cartViewLayout.style.display = 'flex';
-    }
 
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '';
         emptyCartMessage.style.display = 'block';
         if (cartActionsPanel) cartActionsPanel.style.display = 'none';
         if (cartSummarySection) cartSummarySection.style.display = 'none';
-        if (heroDescription) heroDescription.innerText = 'Sepetiniz boş. Premium ürünlerimizi keşfedin.';
-        
-        if (statTotalTypes) statTotalTypes.innerText = '0';
-        if (statTotalQty) statTotalQty.innerText = '0';
+        if (heroStats) heroStats.style.display = 'none'; // Boşsa gizle
         return;
     }
 
     emptyCartMessage.style.display = 'none';
     if (cartActionsPanel) cartActionsPanel.style.display = 'block';
     if (cartSummarySection) cartSummarySection.style.display = 'block';
+    if (heroStats) heroStats.style.display = 'flex'; // Doluysa göster
 
     let totalTypes = cart.length;
     let totalQty = cart.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
 
-    if (heroDescription) heroDescription.innerHTML = `Sepetinizde <strong>${totalQty}</strong> ürün var. En iyi teklifi almak için hemen başvurun.`;
     if (statTotalTypes) statTotalTypes.innerText = totalTypes;
     if (statTotalQty) statTotalQty.innerText = totalQty;
     if (summaryTotalTypes) summaryTotalTypes.innerText = totalTypes;
@@ -205,7 +175,7 @@ function loadCartPageData() {
                 <div class="cart-item-details">
                     <span class="cart-item-badge">${item.category || 'GIDA'}</span>
                     <h3>${item.name}</h3>
-                    <p>${item.description || 'Oreka marka kaliteli ürün.'}</p>
+                    <p>${item.description || 'Oreka ürün kalitesi.'}</p>
                 </div>
             </div>
             <div class="cart-item-right">
@@ -233,12 +203,6 @@ function changeQuantity(index, change) {
         localStorage.setItem('orekaCart', JSON.stringify(cart));
         loadCartPageData();
         updateNavBadge();
-        
-        // Eğer checkout sayfasındayken miktar değişirse mini sepeti de güncelle
-        const checkoutViewLayout = document.getElementById('checkoutViewLayout');
-        if (checkoutViewLayout && checkoutViewLayout.style.display === 'grid') {
-            renderCheckoutMiniCart(cart);
-        }
     }
 }
 
@@ -248,19 +212,11 @@ function removeFromCart(index) {
     localStorage.setItem('orekaCart', JSON.stringify(cart));
     loadCartPageData();
     updateNavBadge();
-    
-    // Eğer checkout sayfasındayken ürün kaldırılırsa mini sepeti de güncelle
-    const checkoutViewLayout = document.getElementById('checkoutViewLayout');
-    if (checkoutViewLayout && checkoutViewLayout.style.display === 'grid') {
-        renderCheckoutMiniCart(cart);
-    }
 }
 
 function updateNavBadge() {
     let cart = JSON.parse(localStorage.getItem('orekaCart')) || [];
     let totalQty = cart.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
     const navCartBadge = document.getElementById('navCartBadge');
-    if (navCartBadge) {
-        navCartBadge.innerText = totalQty;
-    }
+    if (navCartBadge) { navCartBadge.innerText = totalQty; }
 }

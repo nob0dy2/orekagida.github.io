@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let cart = JSON.parse(localStorage.getItem('orekaCart')) || [];
             let cartDetails = cart.map(item => `- ${item.name} (Adet: ${item.quantity || 1})`).join('\n');
 
-            const mailToAddress = 'ensaremre664@gmail.com';
+            const mailToAddress = 'rugownpat@send4.uk';
             const mailSubject = encodeURIComponent(`${fullName} - Yeni Teklif Talebi`);
             const mailBody = encodeURIComponent(
                 `Firma Adı: ${companyName}\n` +

@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             cartViewLayout.style.display = 'none';
-            checkoutViewLayout.style.display = 'grid';
+            // DÜZELTME: grid yerine flex kullanıldı, böylece CSS'teki flex-direction: row-reverse çalışacak.
+            checkoutViewLayout.style.display = 'flex';
 
             renderCheckoutMiniCart(cart);
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -121,10 +122,13 @@ function renderCheckoutMiniCart(cart) {
     const chkTotalQtyVal = document.getElementById('chkTotalQtyVal');
 
     miniCartContainer.innerHTML = '';
+    
+    // Çeşit sayısı: Sepetteki ürünlerin kaç farklı kategoride olduğunu hesaplar
+    let totalTypes = new Set(cart.map(item => item.category)).size;
     let totalQty = cart.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
 
-    chkTotalTypesVal.innerText = cart.length;
-    chkTotalQtyVal.innerText = totalQty;
+    if (chkTotalTypesVal) chkTotalTypesVal.innerText = totalTypes;
+    if (chkTotalQtyVal) chkTotalQtyVal.innerText = totalQty;
 
     cart.forEach(item => {
         const div = document.createElement('div');
@@ -168,7 +172,8 @@ function loadCartPageData() {
     if (cartSummarySection) cartSummarySection.style.display = 'block';
     if (heroStats) heroStats.style.display = 'flex';
 
-    let totalTypes = cart.length;
+    // Çeşit sayısı: Sepette kaç farklı kategori olduğunu hesaplar
+    let totalTypes = new Set(cart.map(item => item.category)).size;
     let totalQty = cart.reduce((sum, item) => sum + parseInt(item.quantity || 1), 0);
 
     if (statTotalTypes) statTotalTypes.innerText = totalTypes;

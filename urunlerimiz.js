@@ -1,4 +1,4 @@
-// urunlerimiz.js - Varsayılan, A-Z ve Z-A Sıralama Özellikli
+// urunlerimiz.js - Benzersiz Ürün Çeşidi Filtreleme ve Doğrudan Sepete Ekleme
 
 const urunler = [
     // --- PEYNİR ÇEŞİTLERİ (105 Adet) ---
@@ -145,7 +145,6 @@ const urunler = [
     { kategori: "kasar", gorsel: "orekalogo.png", isim: "Sarıgüzel Taze Kaşar Peynir 1000 Gr * 12" },
     { kategori: "kasar", gorsel: "orekalogo.png", isim: "Cebeci Taze Kaşar Peynir 1000 Gr * 12" },
     { kategori: "kasar", gorsel: "orekalogo.png", isim: "Muratbey Taze Kaşar Peynir 1000 Gr * 12" },
-
     { kategori: "kasar", gorsel: "orekalogo.png", isim: "Torku Taze Kaşar Peynir Tost 600 Gr * 12" },
     { kategori: "kasar", gorsel: "orekalogo.png", isim: "Çobanoğlu Taze Kaşar Peynir Dilimli 1500 Gr * 8" },
     { kategori: "kasar", gorsel: "orekalogo.png", isim: "Çobanyıldızı Taze Kaşar Peynir Dilimli 1000 Gr * 6" },
@@ -420,7 +419,6 @@ const urunler = [
     { kategori: "bakliyat", gorsel: "orekalogo.png", isim: "Yeşil Mersin 2,5 Kg * 6 Gönen Baldo" },
     { kategori: "bakliyat", gorsel: "orekalogo.png", isim: "Filiz Makarna Tel Şehriye 5 Kg" },
     { kategori: "bakliyat", gorsel: "orekalogo.png", isim: "Filiz Makarna Arpa Şehriye 5 Kg" },
-    
     { kategori: "bakliyat", gorsel: "orekalogo.png", isim: "Olida Baldo Pirinç 5 Kg" },
     { kategori: "bakliyat", gorsel: "orekalogo.png", isim: "Olida Osmancık Pirinç 5 Kg" },
     { kategori: "bakliyat", gorsel: "orekalogo.png", isim: "Olida Bulgur 5 Kg" },
@@ -459,25 +457,36 @@ const container = document.getElementById('product-container');
 const categoryTitle = document.getElementById('category-title');
 const productCountBadge = document.getElementById('product-count');
 
+// Aynı kategori ve isimdeki mükerrer ürünleri temizler (Benzersiz Çeşit Listesi)
+function getUniqueProducts(list) {
+    const seen = new Set();
+    return list.filter(urun => {
+        const key = `${urun.kategori}_${urun.isim.trim().toLowerCase()}`;
+        if (seen.has(key)) {
+            return false;
+        }
+        seen.add(key);
+        return true;
+    });
+}
+
 function renderProducts(list) {
     if (!container) return;
     container.innerHTML = ""; 
 
-    // Sıralama tercihini okuyoruz (varsayılan, az, za)
+    // Çeşitleri benzersizleştir
+    let processedList = getUniqueProducts(list);
+
     const sortSelect = document.getElementById('sortSelect');
     const sortValue = sortSelect ? sortSelect.value : 'default';
-
-    // Yeni bir kopya dizi oluşturup seçime göre işlem yapıyoruz
-    let processedList = [...list];
 
     if (sortValue === 'az') {
         processedList.sort((a, b) => a.isim.localeCompare(b.isim, 'tr', { sensitivity: 'base' }));
     } else if (sortValue === 'za') {
         processedList.sort((a, b) => b.isim.localeCompare(a.isim, 'tr', { sensitivity: 'base' }));
     }
-    // 'default' durumunda diziye hiç dokunulmaz, orijinal sırası korunur.
 
-    processedList.forEach(urun => {
+    processedList.forEach((urun, index) => {
         const productHTML = `
             <div class="product-card" data-category="${urun.kategori}">
                 <div class="product-img-wrapper">
@@ -485,7 +494,9 @@ function renderProducts(list) {
                 </div>
                 <div class="product-info">
                     <h4 class="product-title">${urun.isim}</h4>
-                    <button class="add-to-cart-btn" onclick="addToCart('${urun.isim}', '${urun.kategori}', '${urun.gorsel}')">Sepete Ekle</button>
+                    <div class="product-actions">
+                        <button class="add-to-cart-btn" type="button" onclick="addSpecificToCart(${index})">Sepete Ekle</button>
+                    </div>
                 </div>
             </div>
         `;
@@ -497,10 +508,87 @@ function renderProducts(list) {
     }
 }
 
+// Ürünü ve seçilen adeti sepete ekleme
+window.addSpecificToCart = function(index) {
+    const sortSelect = document.getElementById('sortSelect');
+    const sortValue = sortSelect ? sortSelect.value : 'default';
+    const searchInput = document.getElementById('searchInput');
+    const searchText = searchInput ? searchInput.value.toLowerCase() : "";
+    const activeCategoryLink = document.querySelector('.filter-category-list a.active');
+    const currentCategory = activeCategoryLink ? activeCategoryLink.getAttribute('data-target') : 'all';
+
+    let filtered = urunler.filter(urun => {
+        const matchCategory = currentCategory === 'all' || urun.kategori === currentCategory;
+        const matchSearch = urun.isim.toLowerCase().includes(searchText);
+        return matchCategory && matchSearch;
+    });
+
+    // Filtrelenmiş ve benzersizleştirilmiş listeden ürünü seç
+    filtered = getUniqueProducts(filtered);
+
+    if (sortValue === 'az') {
+        filtered.sort((a, b) => a.isim.localeCompare(b.isim, 'tr', { sensitivity: 'base' }));
+    } else if (sortValue === 'za') {
+        filtered.sort((a, b) => b.isim.localeCompare(a.isim, 'tr', { sensitivity: 'base' }));
+    }
+
+    const urun = filtered[index];
+    const quantity = 1;
+
+    if (!urun) return;
+
+    let cart = JSON.parse(localStorage.getItem('orekaCart')) || [];
+    let existingIndex = cart.findIndex(item => item.name === urun.isim);
+
+    if (existingIndex !== -1) {
+        cart[existingIndex].quantity = parseInt(cart[existingIndex].quantity || 1) + 1;
+    } else {
+        cart.push({
+            name: urun.isim,
+            category: urun.kategori,
+            image: urun.gorsel || 'orekalogo.png',
+            description: 'Oreka marka kaliteli ürün.',
+            quantity: quantity
+        });
+    }
+
+    localStorage.setItem('orekaCart', JSON.stringify(cart));
+    if (typeof updateNavBadge === 'function') {
+        updateNavBadge();
+    }
+
+    // Modal Göster
+    showCartModal(urun.isim, quantity);
+};
+
+function showCartModal(productName, qty) {
+    const overlay = document.getElementById('cartModalOverlay');
+    const textEl = document.getElementById('modalProductText');
+    if (textEl) {
+        textEl.innerHTML = `<strong>"${productName}"</strong> teklif sepetinize başarıyla eklendi.`;
+    }
+    if (overlay) {
+        overlay.classList.add('active');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     if (container) {
         renderProducts(urunler);
         setupFilters();
+    }
+
+    const modalContinueBtn = document.getElementById('modalContinueBtn');
+    const overlay = document.getElementById('cartModalOverlay');
+    if (modalContinueBtn && overlay) {
+        modalContinueBtn.addEventListener('click', () => {
+            overlay.classList.remove('active');
+        });
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+            }
+        });
     }
 });
 

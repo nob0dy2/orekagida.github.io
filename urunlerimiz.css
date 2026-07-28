@@ -389,3 +389,195 @@
         width: 100%;
     }
 }
+
+/* --- ÜRÜN KARTI ADET KONTROLÜ VE BUTON ETKİLEŞİMİ --- */
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.initial-add-btn {
+    width: 100%;
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.initial-add-btn:hover {
+    background-color: #e67e22;
+}
+
+.qty-selection-area {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.qty-selection-area.active {
+    display: flex;
+}
+
+.card-qty-controller {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f8fafc;
+}
+
+.card-qty-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: #334155;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.card-qty-btn:hover {
+    background: #e2e8f0;
+}
+
+.card-qty-input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    background: transparent;
+    color: #0f172a;
+    outline: none;
+}
+
+.confirm-add-btn {
+    width: 100%;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.confirm-add-btn:hover {
+    background-color: #219653;
+}
+
+/* --- BAŞARI MODALI (MODAL) --- */
+.cart-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cart-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-modal-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.cart-modal-overlay.active .cart-modal-card {
+    transform: translateY(0);
+}
+
+.cart-modal-icon {
+    width: 65px;
+    height: 65px;
+    background: #fff7ed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    color: #ea580c;
+    box-shadow: 0 0 20px rgba(234, 88, 12, 0.15);
+}
+
+.cart-modal-card h3 {
+    font-size: 20px;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+    font-weight: 800;
+}
+
+.cart-modal-card p {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+.cart-modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-btn-continue {
+    flex: 1;
+    background: #f1f5f9;
+    color: #334155;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.modal-btn-continue:hover {
+    background: #e2e8f0;
+}
+
+.modal-btn-go-cart {
+    flex: 1;
+    background: linear-gradient(135deg, #ea580c, #c2410c);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+    transition: transform 0.2s;
+}
+
+.modal-btn-go-cart:hover {
+    transform: translateY(-1px);
+}

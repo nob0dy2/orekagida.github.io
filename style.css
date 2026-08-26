@@ -158,7 +158,7 @@ body {
     transition: 0.3s; 
 }
 
-/* Carousel (Slider) - Fade Geçiş ve Boşluk Düzenlemesi */
+/* Carousel (Slider) - Boşluk ve Fade Geçiş Düzenlemesi */
 .hero { 
     position: relative; 
     height: 100vh; 
@@ -449,6 +449,12 @@ body {
 
 /* Mobil Uyumluluk ve Tam Ekran Menü */
 @media (max-width: 768px) {
+    /* Mobilde slide alanını ayarlayarak hafif kaydırmayla alttaki beyaz alanın görünmesini sağlar */
+    .hero {
+        height: calc(100vh - 70px);
+        min-height: 480px;
+    }
+
     .nav-links { 
         position: fixed; 
         top: 0; 
@@ -486,10 +492,23 @@ body {
     }
 
     .slide-content.hero-custom-content {
-        height: 320px; /* Mobilde dikey alanı biraz esnetiyoruz */
+        height: 320px; 
     }
 
     .slide-content h1 { 
-        font-size: 26px; 
+        font-size: 24px; 
+    }
+
+    /* Mobilde butonların alt alta ve tam genişlikte görünmesi */
+    .hero-buttons {
+        flex-direction: column; 
+        width: 100%;
+        gap: 10px;
+    }
+
+    .btn-dark, .btn-outline {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
     }
 }

@@ -42,62 +42,68 @@
         </div>
     </nav>
 
-    <!-- FİLTRE VE KATEGORİ AÇILIR PANELİ (DRAWER) -->
+    <!-- Mobil Arka Plan Karartması (Overlay) -->
     <div class="filter-overlay" id="filterOverlay"></div>
-    <div class="filter-drawer" id="filterDrawer">
-        <div class="filter-drawer-header">
-            <h3>Filtrele</h3>
-            <button class="close-filter-btn" id="closeFilterBtn">&times;</button>
-        </div>
-        <div class="filter-drawer-body">
-            <div class="filter-section">
-                <h4>Kategoriler</h4>
-                <ul class="filter-category-list">
-                    <li><a href="#" class="active" data-target="all">Tüm Ürünler</a></li>
-                    <li><a href="#" data-target="peynir">Peynir Çeşitleri</a></li>
-                    <li><a href="#" data-target="kasar">Kaşar Çeşitleri</a></li>
-                    <li><a href="#" data-target="zeytin">Zeytin Çeşitleri</a></li>
-                    <li><a href="#" data-target="et">Jambon - Salam - Sosis - Sucuk - Pastırma</a></li>
-                    <li><a href="#" data-target="piknik">Piknik Grubu</a></li>
-                    <li><a href="#" data-target="yogurt">Yoğurt Grubu</a></li>
-                    <li><a href="#" data-target="ambalaj">Ambalaj - Kağıt Grubu - Gıda Dışı</a></li>
-                    <li><a href="#" data-target="margarin">Margarin Grubu</a></li>
-                    <li><a href="#" data-target="bakliyat">Bakliyat Grubu</a></li>
-                    <li><a href="#" data-target="yag">Yağ - Grubu</a></li>
-                    <li><a href="#" data-target="yumurta">Yumurta Çeşitleri</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="filter-drawer-footer">
-            <button class="apply-filter-btn" id="applyFilterBtn">Filtreleri Uygula</button>
-            <button class="reset-filter-btn" id="resetFilterBtn">Sıfırla</button>
-        </div>
-    </div>
 
-    <!-- Ürünler Sayfası İçeriği -->
+    <!-- Ürünler Sayfası Ana Kapsayıcı -->
     <main class="products-page-container container">
+        
+        <!-- SOL SABİT KATEGORİ MENÜSÜ -->
+        <aside class="filter-drawer" id="filterDrawer">
+            <div class="filter-drawer-header">
+                <h3>Kategoriler</h3>
+                <button class="close-filter-btn" id="closeFilterBtn">&times;</button>
+            </div>
+            <div class="filter-drawer-body">
+                <div class="filter-section">
+                    <h4 class="desktop-cat-title">KATEGORİLER</h4>
+                    <ul class="filter-category-list">
+                        <li><a href="#" class="active" data-target="all">Tümü</a></li>
+                        <li><a href="#" data-target="peynir">Peynir Çeşitleri</a></li>
+                        <li><a href="#" data-target="kasar">Kaşar Çeşitleri</a></li>
+                        <li><a href="#" data-target="zeytin">Zeytin Çeşitleri</a></li>
+                        <li><a href="#" data-target="et">Jambon - Salam - Sosis - Sucuk - Pastırma</a></li>
+                        <li><a href="#" data-target="piknik">Piknik Grubu</a></li>
+                        <li><a href="#" data-target="yogurt">Yoğurt Grubu</a></li>
+                        <li><a href="#" data-target="ambalaj">Ambalaj - Kağıt Grubu - Gıda Dışı</a></li>
+                        <li><a href="#" data-target="margarin">Margarin Grubu</a></li>
+                        <li><a href="#" data-target="bakliyat">Bakliyat Grubu</a></li>
+                        <li><a href="#" data-target="yag">Yağ - Grubu</a></li>
+                        <li><a href="#" data-target="yumurta">Yumurta Çeşitleri</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="filter-drawer-footer">
+                <button class="apply-filter-btn" id="applyFilterBtn">Filtreleri Uygula</button>
+                <button class="reset-filter-btn" id="resetFilterBtn">Sıfırla</button>
+            </div>
+        </aside>
+
+        <!-- ÜRÜNLER LİSTELEME ALANI -->
         <section class="products-main-area">
             
+            <!-- TÜM İÇERİK TEK BİR KUTU (TOOLBAR) İÇİNDE TOPARLANDI -->
             <div class="products-toolbar">
-                <div class="toolbar-left">
+                <div class="toolbar-top-row">
+                    <div class="search-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="searchInput" placeholder="Ürün ara...">
+                    </div>
+
                     <button class="filter-toggle-btn" id="filterToggleBtn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-                        Filtrele
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                        <span>Filtrele</span>
                     </button>
                 </div>
 
-                <div class="toolbar-right">
-                    <div class="search-box">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <input type="text" id="searchInput" placeholder="Ara...">
-                    </div>
+                <div class="toolbar-bottom-row">
+                    <h2 id="category-title" class="static-page-title">Tümü</h2>
+                    <span id="product-count" class="product-count-badge">0 Ürün</span>
                 </div>
             </div>
 
-            <div class="products-header">
-                <h2 id="category-title">Tüm Ürünler</h2>
-                <span id="product-count" class="product-count-badge">0 Ürün</span>
-            </div>
+            <!-- Eski ayrı başlık alanı gizlendi/kaldırıldı -->
+            <div class="products-header" style="display: none;"></div>
 
             <!-- JAVASCRIPT İLE ÜRÜNLERİN YÜKLENECEĞİ ALAN -->
             <div class="products-grid" id="product-container"></div>

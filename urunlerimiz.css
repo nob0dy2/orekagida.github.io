@@ -1,6 +1,6 @@
 /* --- GENEL DÜZEN VE SCROLLBAR SABİTLEME --- */
 html {
-    overflow-y: scroll; /* Yoğurt gibi az ürünlü kategorilerde scrollbar'ın kaybolmasını ve sayfanın zıplamasını engeller */
+    overflow-y: scroll; /* Yoğurt gibi az ürünlü kategorilerde scrollbar'ın kaybolmasını ve sayfanın zıplamasını engeller[cite: 1] */
 }
 
 /* --- SAYFA YERLEŞİMİ (FLEX LAYOUT) --- */
@@ -257,11 +257,11 @@ html {
     background-color: #c2410c;
 }
 
-/* --- MOBİL UYUMLULUK --- */
+/* --- MOBİL UYUMLULUK & IPHONE SE OPTİMİZASYONU --- */
 @media (max-width: 991px) {
     .products-page-container {
         display: block;
-        padding: 85px 12px 40px 12px;
+        padding: 85px 10px 40px 10px;
     }
 
     .products-main-area {
@@ -365,59 +365,102 @@ html {
         opacity: 1;
     }
 
-    .filter-toggle-btn {
-        display: flex !important;
-        align-items: center;
-        gap: 6px;
-        background-color: #f8fafc;
-        color: #1e293b;
-        border: 1px solid #cbd5e1;
-        padding: 8px 12px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 13px;
-        cursor: pointer;
-        white-space: nowrap;
-    }
-
+    /* İPHONE SE GİBİ DAR EKRANLAR İÇİN ARAÇ ÇUBUĞU DÜZENİ */
     .products-toolbar {
         top: 60px;
-        padding: 10px 12px;
-        gap: 8px;
+        padding: 8px 10px;
+        gap: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .toolbar-left-group {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex: 1;
+        min-width: 0;
     }
 
     .toolbar-left-group h2 {
         display: none !important;
     }
 
+    .filter-toggle-btn {
+        display: flex !important;
+        align-items: center;
+        gap: 4px;
+        background-color: #f8fafc;
+        color: #1e293b;
+        border: 1px solid #cbd5e1;
+        padding: 6px 8px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 12px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
     .search-box {
+        display: flex;
+        align-items: center;
+        background-color: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 5px 8px;
+        gap: 4px;
+        width: auto !important;
+        flex: 1 !important; /* iPhone SE'de kalan alanı tamamen doldurur ve esner */
+        min-width: 0;
+    }
+
+    .search-box svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+    }
+
+    .search-box input {
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 12px;
+        width: 100%;
+        color: #1e293b;
+    }
+
+    .product-count-badge {
         width: auto;
-        flex: 1;
-        padding: 6px 10px;
+        min-width: unset;
+        padding: 5px 8px;
+        font-size: 11px;
+        flex-shrink: 0;
     }
 
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .product-img-wrapper {
-        height: 140px;
-    }
-
-    .product-info {
-        padding: 10px;
         gap: 8px;
     }
 
+    .product-img-wrapper {
+        height: 130px;
+    }
+
+    .product-info {
+        padding: 8px;
+        gap: 6px;
+    }
+
     .product-title {
-        font-size: 13px;
-        min-height: 36px;
+        font-size: 12px;
+        min-height: 34px;
     }
 
     .add-to-cart-btn {
-        padding: 7px;
-        font-size: 12px;
+        padding: 6px;
+        font-size: 11px;
     }
 }
 

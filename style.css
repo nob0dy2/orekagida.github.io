@@ -144,18 +144,55 @@ body {
     border: 2px solid #fff;
 }
 
+/* --- Animasyonlu Hamburger Menü (4. Stil) --- */
 .hamburger { 
-    display: none; 
+    width: 30px;
+    height: 22px;
+    position: relative;
     cursor: pointer; 
+    display: none; 
     z-index: 3000;
 }
 
-.hamburger .bar { 
-    width: 25px; 
-    height: 3px; 
-    background-color: #333; 
-    margin: 5px 0; 
-    transition: 0.3s; 
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #333; 
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) { 
+    top: 0px; 
+}
+
+.hamburger span:nth-child(2) { 
+    top: 9px; 
+}
+
+.hamburger span:nth-child(3) { 
+    top: 18px; 
+}
+
+/* Tıklandığında Çarpı (X) Dönüşüm Animasyonu */
+.hamburger.active span:nth-child(1) { 
+    top: 9px; 
+    transform: rotate(135deg); 
+}
+
+.hamburger.active span:nth-child(2) { 
+    opacity: 0; 
+    transform: translateX(-20px); 
+}
+
+.hamburger.active span:nth-child(3) { 
+    top: 9px; 
+    transform: rotate(-135deg); 
 }
 
 /* Carousel (Slider) - Boşluk ve Fade Geçiş Düzenlemesi */
@@ -449,7 +486,6 @@ body {
 
 /* Mobil Uyumluluk ve Tam Ekran Menü */
 @media (max-width: 768px) {
-    /* Mobilde 100dvh kullanarak adres çubuğu boşluklarını ve alttaki beyazlığı engelliyoruz */
     .hero {
         height: 100dvh; 
         min-height: auto;
@@ -499,7 +535,6 @@ body {
         font-size: 24px; 
     }
 
-    /* Mobilde butonların alt alta ve tam genişlikte görünmesi */
     .hero-buttons {
         flex-direction: column; 
         width: 100%;

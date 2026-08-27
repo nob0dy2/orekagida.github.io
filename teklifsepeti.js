@@ -193,7 +193,6 @@ function loadCartPageData() {
                 <div class="cart-item-details">
                     <span class="cart-item-badge">${item.category || 'GIDA'}</span>
                     <h3>${item.name}</h3>
-                    <p>${item.description || 'Oreka ürün kalitesi.'}</p>
                 </div>
             </div>
             <div class="cart-item-right">

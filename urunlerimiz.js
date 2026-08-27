@@ -541,7 +541,6 @@ window.addSpecificToCart = function(index) {
             name: urun.isim,
             category: urun.kategori,
             image: urun.gorsel || 'orekalogo.png',
-            description: 'Oreka marka kaliteli ürün.',
             quantity: quantity
         });
     }

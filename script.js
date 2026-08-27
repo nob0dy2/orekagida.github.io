@@ -9,11 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle("active");
         });
 
-        // Menüdeki bir linke tıklandığında menüyü kapat (Mobil için)
-        document.querySelectorAll(".nav-links li a").forEach(link => {
+        // Menüdeki veya kategorideki bir linke tıklandığında menüyü kapat (Mobil için)
+        document.querySelectorAll(".nav-links li a, .filter-category-list li a").forEach(link => {
             link.addEventListener("click", () => {
                 hamburger.classList.remove("active");
                 navLinks.classList.remove("active");
+
+                // Ürünler sayfasındaki filtre çekmecesinin de otomatik kapanması için
+                const filterDrawer = document.getElementById('filterDrawer');
+                const filterOverlay = document.getElementById('filterOverlay');
+                if (filterDrawer && filterOverlay) {
+                    filterDrawer.classList.remove('open');
+                    filterOverlay.classList.remove('active');
+                }
             });
         });
     }

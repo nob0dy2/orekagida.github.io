@@ -1,7 +1,7 @@
 // urunlerimiz.js - Benzersiz Ürün Çeşidi Filtreleme ve Doğrudan Sepete Ekleme
 
 const urunler = [
-    // --- PEYNİR ÇEŞİTLERİ (101 Adet - Alfabetik Sıralı) ---
+    // --- PEYNİR ÇEŞİTLERİ ---
     { kategori: "peynir", gorsel: "img/peynir/a-r-mus-eski-kasar-kg.webp", isim: "A.r.muş Eski Kaşar Kg" },
     { kategori: "peynir", gorsel: "img/peynir/a-r-z-tulum-peyniri-kg.webp", isim: "A.r Z Tulum Peyniri Kg" },
     { kategori: "peynir", gorsel: "img/peynir/a-r-z-tulum-peyniri-vakumlu-kg.webp", isim: "A.r Z Tulum Peyniri (Vakumlu) Kg" },
@@ -104,7 +104,7 @@ const urunler = [
     { kategori: "peynir", gorsel: "img/peynir/unal-taze-kasar-peynir-700-gr-12.webp", isim: "Ünal Taze Kaşar Peynir 700 Gr * 12" },
     { kategori: "peynir", gorsel: "img/peynir/yesilcay-yarim-yagli-beyaz-peynir.webp", isim: "Yeşilçay Yarım Yağlı Beyaz Peynir" },
 
-    // --- KAŞAR ÇEŞİTLERİ (52 Adet) ---
+    // --- KAŞAR ÇEŞİTLERİ ---
     { kategori: "kasar", gorsel: "img/kasar/aksa-kasar-peyniri-dilimli-1000-gr-12.webp", isim: "Aksa Kaşar Peyniri Dilimli 1000 Gr * 12" },
     { kategori: "kasar", gorsel: "img/kasar/aksa-kasar-peyniri-tam-yagli-1000-gr-12.webp", isim: "Aksa Kaşar Peyniri Tam Yağlı 1000 Gr * 12" },
     { kategori: "kasar", gorsel: "img/kasar/aksa-kasar-peyniri-yarim-yagli-1000-gr-12.webp", isim: "Aksa Kaşar Peyniri Yarım Yağlı 1000 Gr * 12" },
@@ -158,7 +158,7 @@ const urunler = [
     { kategori: "kasar", gorsel: "img/kasar/uzelkoy-dilimli-taze-kasar-1000-gr-9.webp", isim: "Uzelköy Dilimli Taze Kaşar 1000 Gr * 9" },
     { kategori: "kasar", gorsel: "img/kasar/vahdet-taze-kasar-peynir-1000-gr-12.webp", isim: "Vahdet Taze Kaşar Peynir 1000 Gr * 12" },
 
-    // --- ZEYTİN ÇEŞİTLERİ (74 Adet - Alfabetik Sıralı) ---
+    // --- ZEYTİN ÇEŞİTLERİ ---
     { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Bademli Yeşil Zeytin 10 kg 110-120 Kalibre" },
     { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Biberli Yeşil Zeytin 10 kg 180-200 Kalibre" },
     { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Biberli Yeşil Zeytin 10 kg 200-230 Kalibre" },
@@ -234,7 +234,7 @@ const urunler = [
     { kategori: "zeytin", gorsel: "img/zeytin/zeytin-siyah-kalamata-10-kg.webp", isim: "Zeytin Siyah Kalamata 10 Kg" },
     { kategori: "zeytin", gorsel: "img/zeytin/zova-yesil-zeytin-izgara-zeytin-grill-9-kg.webp", isim: "Zova Yeşil Zeytin Izgara Zeytin (Grill) 9 Kg" },
 
-    // --- JAMBON / ŞARKÜTERİ (69 Adet - Alfabetik Sıralı) ---
+    // --- JAMBON / ŞARKÜTERİ ---
     { kategori: "et", gorsel: "img/jambon/altinay-jambon-dana-kg.webp", isim: "Altınay Jambon Dana Kg" },
     { kategori: "et", gorsel: "img/jambon/altinay-jambon-hindi.webp", isim: "Altınay Jambon Hindi" },
     { kategori: "et", gorsel: "img/jambon/altinay-jambon-pilic-kg.webp", isim: "Altınay Jambon Piliç Kg" },
@@ -305,7 +305,7 @@ const urunler = [
     { kategori: "et", gorsel: "img/jambon/sahin-salam-dana-macar-900-gr-12.webp", isim: "Şahin Salam Dana Macar 900 Gr * 12" },
     { kategori: "et", gorsel: "img/jambon/sahin-salam-ispanyol-2-kg-6.webp", isim: "Şahin Salam İspanyol 2 Kg * 6" },
 
-    // --- PİKNİK GRUBU (45 Adet - Alfabetik Sıralı) ---
+    // --- PİKNİK GRUBU ---
     { kategori: "piknik", gorsel: "img/piknik/calve-ranch-sos-245-gr-12.webp", isim: "Calve Ranch Sos 245 Gr * 12" },
     { kategori: "piknik", gorsel: "img/piknik/heinz-barbeku-sos-bbq-hp-klasik-465-gr-8.webp", isim: "Heinz Barbekü Sos Bbq Hp Klasik 465 Gr * 8" },
     { kategori: "piknik", gorsel: "img/piknik/heinz-hardal-mild-445-gr-10.webp", isim: "Heinz Hardal Mild 445 Gr * 10" },
@@ -352,12 +352,12 @@ const urunler = [
     { kategori: "piknik", gorsel: "img/piknik/tukas-ketcap-kova-9-kg.webp", isim: "Tukaş Ketçap Kova 9 Kg" },
     { kategori: "piknik", gorsel: "img/piknik/tukas-mayonez-kova-8-kg.webp", isim: "Tukaş Mayonez Kova 8 Kg" },
 
-    // --- YOĞURT GRUBU (3 Adet) ---
+    // --- YOĞURT GRUBU ---
     { kategori: "yogurt", gorsel: "img/yogurt/gursut-yogurt-suzme-10-kg.webp", isim: "Gürsüt Yoğurt Süzme 10 Kg" },
     { kategori: "yogurt", gorsel: "img/yogurt/ozpey-suzme-yogurt-kova-5-kg.webp", isim: "Özpey Süzme Yoğurt Kova 5 Kg" },
     { kategori: "yogurt", gorsel: "img/yogurt/teksut-suzme-yogurt-9-kg.webp", isim: "Teksüt Süzme Yoğurt 9 Kg" },
 
-    // --- AMBALAJ - KAĞIT GRUBU - GIDA DIŞI ÜRÜNLER (19 Adet - Alfabetik Sıralı) ---
+    // --- AMBALAJ - KAĞIT GRUBU - GIDA DIŞI ÜRÜNLER ---
     { kategori: "ambalaj", gorsel: "img/ambalaj/aluminyum-folyo-30-cm-2-kg.webp", isim: "Alüminyum Folyo (30 Cm) 2 Kg" },
     { kategori: "ambalaj", gorsel: "img/ambalaj/aluminyum-folyo-45-cm-2-kg.webp", isim: "Alüminyum Folyo (45 Cm) 2 Kg" },
     { kategori: "ambalaj", gorsel: "img/ambalaj/dispanser-pecete-100lu.webp", isim: "Dispanser Peçete 100'lü" },
@@ -378,14 +378,14 @@ const urunler = [
     { kategori: "ambalaj", gorsel: "img/ambalaj/tahta-karistirici-b-kalite-500-adet.webp", isim: "Tahta Karıştırıcı B Kalite 500 Adet" },
     { kategori: "ambalaj", gorsel: "img/ambalaj/z-havlu-pecete-100lu.webp", isim: "Z Havlu Peçete 100'lü" },
 
-    // --- MARGARİN GRUBU (5 Adet) ---
+    // --- MARGARİN GRUBU ---
     { kategori: "margarin", gorsel: "img/margarin/birma-margarin-250-gr-48.webp", isim: "Birma Margarin 250 Gr * 48" },
     { kategori: "margarin", gorsel: "img/margarin/bizim-margarin-250-gr-48.webp", isim: "Bizim Margarin 250 Gr * 48" },
     { kategori: "margarin", gorsel: "img/margarin/sana-margarin-250-gr-24.webp", isim: "Sana Margarin 250 Gr * 24" },
     { kategori: "margarin", gorsel: "img/margarin/terem-margarin-250-gr-48.webp", isim: "Terem Margarin 250 Gr * 48" },
     { kategori: "margarin", gorsel: "img/margarin/yayla-margarin-250-gr-48.webp", isim: "Yayla Margarin 250 Gr * 48" },
 
-    // --- BAKLIYAT GRUBU (48 Adet - Alfabetik Sıralı) ---
+    // --- BAKLIYAT GRUBU ---
     { kategori: "bakliyat", gorsel: "img/bakliyat/beyaz-nohut-meksika-12-mm-25-kg.webp", isim: "Beyaz Nohut Meksika 12 Mm 25 Kg" },
     { kategori: "bakliyat", gorsel: "img/bakliyat/filiz-makarna-arpa-sehriye-5-kg.webp", isim: "Filiz Makarna Arpa Şehriye 5 Kg" },
     { kategori: "bakliyat", gorsel: "img/bakliyat/filiz-makarna-tel-sehriye-5-kg.webp", isim: "Filiz Makarna Tel Şehriye 5 Kg" },
@@ -435,7 +435,7 @@ const urunler = [
     { kategori: "bakliyat", gorsel: "img/bakliyat/yesil-mersin-yesil-mercimek-25-kg.webp", isim: "Yeşil Mersin Yeşil Mercimek 25 Kg" },
     { kategori: "bakliyat", gorsel: "img/bakliyat/zeki-osmancik-pirinc-25-kg.webp", isim: "Zeki Osmancık Pirinç 25 Kg" },
 
-    // --- YAĞ GRUBU (7 Adet - Alfabetik Sıralı) ---
+    // --- YAĞ GRUBU ---
     { kategori: "yag", gorsel: "img/yag/biryag-aycicek-yagi-5-l-pet.webp", isim: "Biryağ Ayçiçek Yağı 5 L Pet" },
     { kategori: "yag", gorsel: "img/yag/bizim-kizartma-yagi-18-l.webp", isim: "Bizim Kızartma Yağı 18 L" },
     { kategori: "yag", gorsel: "img/yag/kirlangic-riviera-zeytinyagi-5-l-pet.webp", isim: "Kırlangıç Riviera Zeytinyağı 5 L Pet" },
@@ -444,7 +444,7 @@ const urunler = [
     { kategori: "yag", gorsel: "img/yag/taris-riviera-zeytinyagi-5-l-pet.webp", isim: "Tariş Riviera Zeytinyağı 5 L Pet" },
     { kategori: "yag", gorsel: "img/yag/yudum-aycicek-yagi-5-l-pet.webp", isim: "Yudum Ayçiçek Yağı 5 L Pet" },
 
-    // --- YUMURTA ÇEŞİTLERİ (4 Çeşit - Alfabetik Sıralı) ---
+    // --- YUMURTA ÇEŞİTLERİ ---
     { kategori: "yumurta", gorsel: "img/yumurta/koy-yumurtasi-30lu-koli.webp", isim: "Köy Yumurtası 30'lu Koli" },
     { kategori: "yumurta", gorsel: "img/yumurta/yumurta-l-boy-30lu-koli.webp", isim: "Yumurta L Boy 30'lu Koli" },
     { kategori: "yumurta", gorsel: "img/yumurta/yumurta-m-boy-30lu-koli.webp", isim: "Yumurta M Boy 30'lu Koli" },
@@ -455,7 +455,6 @@ const container = document.getElementById('product-container');
 const categoryTitle = document.getElementById('category-title');
 const productCountBadge = document.getElementById('product-count');
 
-// Aynı kategori ve isimdeki mükerrer ürünleri temizler (Benzersiz Çeşit Listesi)
 function getUniqueProducts(list) {
     const seen = new Set();
     return list.filter(urun => {
@@ -472,7 +471,6 @@ function renderProducts(list) {
     if (!container) return;
     container.innerHTML = ""; 
 
-    // Çeşitleri benzersizleştir
     let processedList = getUniqueProducts(list);
 
     const sortSelect = document.getElementById('sortSelect');
@@ -506,7 +504,6 @@ function renderProducts(list) {
     }
 }
 
-// Ürünü ve seçilen adeti sepete ekleme
 window.addSpecificToCart = function(index) {
     const sortSelect = document.getElementById('sortSelect');
     const sortValue = sortSelect ? sortSelect.value : 'default';
@@ -521,7 +518,6 @@ window.addSpecificToCart = function(index) {
         return matchCategory && matchSearch;
     });
 
-    // Filtrelenmiş ve benzersizleştirilmiş listeden ürünü seç
     filtered = getUniqueProducts(filtered);
 
     if (sortValue === 'az') {
@@ -555,7 +551,6 @@ window.addSpecificToCart = function(index) {
         updateNavBadge();
     }
 
-    // Modal Göster
     showCartModal(urun.isim, quantity);
 };
 
@@ -594,6 +589,8 @@ function setupFilters() {
     const searchInput = document.getElementById('searchInput');
     const categoryLinks = document.querySelectorAll('.filter-category-list a');
     const sortSelect = document.getElementById('sortSelect');
+    const filterDrawer = document.getElementById('filterDrawer');
+    const filterOverlay = document.getElementById('filterOverlay');
     let currentCategory = 'all';
 
     function filterData() {
@@ -624,6 +621,12 @@ function setupFilters() {
             if(categoryTitle) categoryTitle.innerText = e.target.innerText;
             
             filterData();
+
+            // Mobilde kategori seçildiğinde filtre menüsünü ve karartmayı otomatik kapat
+            if (window.innerWidth <= 991) {
+                if (filterDrawer) filterDrawer.classList.remove('open');
+                if (filterOverlay) filterOverlay.classList.remove('active');
+            }
         });
     });
 }

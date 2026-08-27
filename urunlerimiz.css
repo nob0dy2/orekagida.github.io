@@ -115,14 +115,12 @@ html {
     flex: 1;
 }
 
-/* KATEGORİ BAŞLIĞI (JS DEĞİŞTİRSE BİLE ASLA KAYMAZ/GENİŞLEMEZ) */
+/* KATEGORİ BAŞLIĞI */
 .toolbar-left-group h2 {
     font-size: 17px !important;
     color: #0f172a !important;
     font-weight: 700 !important;
     margin: 0 !important;
-    
-    /* Konumu ve boyutu sabitleyen kurallar */
     width: 250px !important;
     min-width: 250px !important;
     max-width: 250px !important;
@@ -262,7 +260,7 @@ html {
 @media (max-width: 991px) {
     .products-page-container {
         display: block;
-        padding: 85px 8px 40px 8px; /* Kenar boşlukları dar ekranlar için optimize edildi */
+        padding: 85px 8px 40px 8px;
     }
 
     .products-main-area {
@@ -288,9 +286,12 @@ html {
     }
 
     .filter-drawer-header,
-    .filter-drawer-footer,
     .close-filter-btn {
         display: flex !important;
+    }
+
+    .filter-drawer-footer {
+        display: none !important;
     }
 
     .filter-drawer-header {
@@ -318,32 +319,6 @@ html {
         padding: 15px;
     }
 
-    .filter-drawer-footer {
-        padding: 12px 15px;
-        border-top: 1px solid #eee;
-        display: flex;
-        gap: 10px;
-    }
-
-    .apply-filter-btn, .reset-filter-btn {
-        flex: 1;
-        padding: 10px;
-        border-radius: 6px;
-        font-weight: 600;
-        cursor: pointer;
-        border: none;
-    }
-
-    .apply-filter-btn {
-        background-color: #ea580c;
-        color: #fff;
-    }
-
-    .reset-filter-btn {
-        background-color: #f1f5f9;
-        color: #334155;
-    }
-
     .desktop-cat-title {
         display: none;
     }
@@ -366,11 +341,11 @@ html {
         opacity: 1;
     }
 
-    /* GALAXY S22 VB. DAR EKRANLAR İÇİN KUSURSUZ ARAÇ ÇUBUĞU */
+    /* GALAXY S22 VB. DAR EKRANLAR İÇİN KUSURSUZ ARAÇ ÇUBUĞU (KISA FİLTRELE BUTONU) */
     .products-toolbar {
         top: 60px;
-        padding: 6px 8px;
-        gap: 5px;
+        padding: 8px 10px;
+        gap: 8px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -379,8 +354,8 @@ html {
     .toolbar-left-group {
         display: flex;
         align-items: center;
-        gap: 4px;
-        flex: 1;
+        gap: 8px;
+        flex: 0.7;
         min-width: 0;
     }
 
@@ -388,20 +363,30 @@ html {
         display: none !important;
     }
 
+    .toolbar-right-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 2;
+        min-width: 0;
+    }
+
     .filter-toggle-btn {
         display: flex !important;
         align-items: center;
-        gap: 3px;
+        justify-content: center;
+        gap: 4px;
         background-color: #f8fafc;
         color: #1e293b;
         border: 1px solid #cbd5e1;
-        padding: 5px 6px;
+        padding: 6px 8px;
         border-radius: 6px;
         font-weight: 600;
-        font-size: 11px;
+        font-size: 12px;
         cursor: pointer;
         white-space: nowrap;
-        flex-shrink: 0;
+        flex: 0 0 auto; /* Butonun içeriği kadar yer kaplamasını sağlar (yatayda kısaltır) */
+        min-width: 0;
     }
 
     .search-box {
@@ -410,16 +395,15 @@ html {
         background-color: #f8fafc;
         border: 1px solid #cbd5e1;
         border-radius: 6px;
-        padding: 4px 6px;
-        gap: 4px;
-        width: auto !important;
-        flex: 1 !important; /* S22 ekranında kalan alanı esnekçe doldurur */
+        padding: 6px 10px;
+        gap: 6px;
+        flex: 1.5;
         min-width: 0;
     }
 
     .search-box svg {
-        width: 13px;
-        height: 13px;
+        width: 14px;
+        height: 14px;
         flex-shrink: 0;
     }
 
@@ -427,17 +411,26 @@ html {
         border: none;
         background: transparent;
         outline: none;
-        font-size: 11px;
+        font-size: 12px;
         width: 100%;
         color: #1e293b;
     }
 
     .product-count-badge {
-        width: auto;
-        min-width: unset;
-        padding: 4px 6px;
-        font-size: 10px;
-        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f1f5f9;
+        color: #475569;
+        border: 1px solid #e2e8f0;
+        padding: 6px 8px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+        flex: 0 0 auto;
+        min-width: 0;
+        text-align: center;
     }
 
     .products-grid {

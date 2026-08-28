@@ -118,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.removeItem('orekaCart');
                 loadCartPageData();
                 updateNavBadge();
+                
+                // Sepet boşaltıldığında sayfanın en üstüne yumuşak bir şekilde kaydır
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
     }

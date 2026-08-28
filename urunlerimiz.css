@@ -1,30 +1,39 @@
 /* --- GENEL DÜZEN VE SCROLLBAR SABİTLEME --- */
 html {
-    overflow-y: scroll; 
+    overflow-y: scroll;
 }
 
 /* --- SAYFA YERLEŞİMİ (FLEX LAYOUT) --- */
 .products-page-container {
     max-width: 1350px;
     margin: 0 auto;
-    padding: 100px 20px 60px 20px;
+    padding: 70px 20px 60px 20px;
     display: flex;
     align-items: flex-start;
     gap: 30px;
 }
 
-/* --- SOL KATEGORİ MENÜSÜ (KESİN SABİT) --- */
+/* --- SOL KATEGORİ MENÜSÜ (KESİN SABİT - FIXED & İÇTEN KAYDIRILABİLİR & SCROLLBAR GİZLİ) --- */
 .filter-drawer {
     width: 280px !important;
     min-width: 280px !important;
     max-width: 280px !important;
     flex-shrink: 0 !important;
-    position: sticky !important;
-    top: 95px !important;
+    position: fixed !important;
+    top: 100px !important;
+    left: max(20px, calc((100% - 1350px) / 2 + 20px));
     background: transparent;
     box-shadow: none;
-    height: auto;
+    height: calc(100vh - 100px);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
     z-index: 100;
+
+    scrollbar-width: none;
+}
+
+.filter-drawer::-webkit-scrollbar {
+    display: none;
 }
 
 .filter-drawer-header,
@@ -39,17 +48,17 @@ html {
 
 .desktop-cat-title {
     font-size: 13px;
-    color: #888;
+    color: #475569;
     letter-spacing: 0.8px;
     margin-bottom: 12px;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 .filter-category-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px; /* Kategoriler arasındaki dikey boşluk azaltıldı ve yakınlık artırıldı */
     padding: 0;
     margin: 0;
     width: 100%;
@@ -57,54 +66,58 @@ html {
 
 .filter-category-list li a {
     text-decoration: none;
-    color: #333;
-    font-size: 14px;
+    color: #1e293b;
+    font-size: 14.5px;
     display: block;
-    padding: 12px 16px;
+    padding: 9px 16px; /* İç boşluklar daraltılarak daha kompakt ve yakın bir görünüm sağlandı */
     border-radius: 8px;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.2s ease;
     width: 100%;
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: 1px solid transparent;
 }
 
 .filter-category-list li a:hover {
-    background-color: #f1f3f5;
+    background-color: #fff7ed;
     color: #ea580c;
+    border-color: #fed7aa;
 }
 
 .filter-category-list li a.active {
     background-color: #ea580c !important;
     color: #ffffff !important;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
 }
 
 /* --- SAĞ ÜRÜNLER ALANI --- */
 .products-main-area {
     flex: 1;
     min-width: 0;
+    margin-left: 310px;
 }
 
-/* --- TOOLBAR: BAŞLIK ALANI KESİN KİLİTLİ --- */
+/* --- TOOLBAR: ORİJİNAL TASARIM VE TURUNCU ALT ÇİZGİ (BOŞLUKLU) --- */
 .products-toolbar {
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 15px 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    margin-bottom: 40px; /* Ürün kartlarıyla aradaki boşluk artırıldı */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     
     position: sticky;
-    top: 95px;
-    z-index: 99;
+    top: 100px;
+    z-index: 102;
+    border-bottom: 3px solid #ea580c;
 }
 
 .toolbar-left-group {
@@ -265,9 +278,9 @@ html {
 
     .products-main-area {
         width: 100%;
+        margin-left: 0;
     }
 
-    /* MOBİL KATEGORİ MENÜSÜ - KAYDIRMA GEREKTİRMEYEN OPTİMİZE HALİ */
     .filter-drawer {
         position: fixed !important;
         top: 0 !important;
@@ -282,6 +295,7 @@ html {
         transition: left 0.3s ease;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
     }
 
     .filter-drawer.open {
@@ -328,7 +342,6 @@ html {
         display: none;
     }
 
-    /* Kategori liste elemanları mobilde daha sıkıştırılmış ve tek ekrana sığacak boyutta */
     .filter-category-list {
         gap: 3px !important;
     }
@@ -363,6 +376,8 @@ html {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        border-bottom: 2px solid #ea580c;
+        margin-bottom: 20px; /* Mobilde toolbar ile kartlar arası boşluk güncellendi */
     }
 
     .toolbar-left-group {

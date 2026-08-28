@@ -19,7 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
             checkoutViewLayout.style.display = 'flex';
 
             renderCheckoutMiniCart(cart);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Masaüstünde en üste, mobilde ise doğrudan form alanına (iletişim bilgilerine) odaklan
+            const checkoutCard = document.querySelector('.checkout-left');
+            if (window.innerWidth <= 992 && checkoutCard) {
+                checkoutCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         });
     }
 

@@ -29,6 +29,8 @@
     min-height: 88vh;
     padding-bottom: 80px;
     font-family: inherit;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Şık Glassmorphism & Gradient Header (Dikey olarak küçültüldü) */
@@ -129,8 +131,13 @@
 
 .quote-content-layout {
     max-width: 1200px;
-    margin: 30px auto 0 auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 }
 
 /* Sepet Flex Layout */
@@ -139,10 +146,14 @@
     gap: 30px;
     width: 100%;
     align-items: flex-start;
+    flex: 1;
 }
 .cart-items-section {
     flex: 1;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .cart-summary-section {
     width: 380px;
@@ -237,7 +248,7 @@
 .cart-actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .clear-cart-btn {
@@ -262,7 +273,7 @@
     background: var(--card-bg);
     border: 2px dashed #cbd5e1;
     border-radius: var(--radius-lg);
-    padding: 60px 30px;
+    padding: 40px 20px;
     text-align: center;
     box-shadow: var(--shadow-sm);
     max-width: 700px;
@@ -270,26 +281,26 @@
     width: 100%;
 }
 .empty-cart-icon-wrapper {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background: var(--primary-light);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 16px auto;
     box-shadow: 0 0 25px rgba(234, 88, 12, 0.15);
 }
-.empty-cart-card h3 { font-size: 24px; color: var(--text-main); margin: 0 0 10px 0; font-weight: 800; }
-.empty-cart-card p { font-size: 15px; color: var(--text-muted); margin: 0 0 28px 0; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.empty-cart-card h3 { font-size: 22px; color: var(--text-main); margin: 0 0 8px 0; font-weight: 800; }
+.empty-cart-card p { font-size: 14px; color: var(--text-muted); margin: 0 0 20px 0; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.5; }
 .explore-btn {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: #fff;
     text-decoration: none;
-    padding: 14px 30px;
+    padding: 12px 26px;
     border-radius: var(--radius-sm);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     display: inline-block;
     box-shadow: 0 6px 20px rgba(234, 88, 12, 0.3);
     transition: var(--transition);
@@ -355,7 +366,7 @@
 /* Checkout (Form) Layout - ÖZET SOLDA, FORM SAĞDA DÜZENİ */
 .checkout-layout {
     display: flex;
-    flex-direction: row-reverse; /* Sağ ve Sol elemanların yerini tersine çevirir */
+    flex-direction: row-reverse;
     gap: 30px;
     align-items: flex-start;
 }
@@ -427,8 +438,11 @@
 
 /* Responsive Düzenlemeler */
 @media (max-width: 992px) {
+    .quote-hero {
+        padding: 75px 15px 20px 15px;
+    }
     .cart-layout { flex-direction: column; }
-    .checkout-layout { flex-direction: column-reverse; } /* Mobilde form üstte, özet altta kalır */
+    .checkout-layout { flex-direction: column-reverse; }
     .cart-summary-section, .checkout-right { width: 100%; }
     .form-row { grid-template-columns: 1fr; gap: 0; }
     .cart-item-card { flex-direction: column; align-items: flex-start; gap: 18px; }

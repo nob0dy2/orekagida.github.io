@@ -1,6 +1,6 @@
 /* --- GENEL DÜZEN VE SCROLLBAR SABİTLEME --- */
 html {
-    overflow-y: scroll; /* Yoğurt gibi az ürünlü kategorilerde scrollbar'ın kaybolmasını ve sayfanın zıplamasını engeller[cite: 1] */
+    overflow-y: scroll; 
 }
 
 /* --- SAYFA YERLEŞİMİ (FLEX LAYOUT) --- */
@@ -267,6 +267,7 @@ html {
         width: 100%;
     }
 
+    /* MOBİL KATEGORİ MENÜSÜ - KAYDIRMA GEREKTİRMEYEN OPTİMİZE HALİ */
     .filter-drawer {
         position: fixed !important;
         top: 0 !important;
@@ -274,11 +275,13 @@ html {
         width: 270px !important;
         min-width: 270px !important;
         height: 100vh;
+        max-height: 100vh;
         background-color: #fff;
         box-shadow: 5px 0 25px rgba(0,0,0,0.15);
         z-index: 4000;
         transition: left 0.3s ease;
-        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .filter-drawer.open {
@@ -297,12 +300,12 @@ html {
     .filter-drawer-header {
         justify-content: space-between;
         align-items: center;
-        padding: 18px;
+        padding: 12px 15px;
         border-bottom: 1px solid #eee;
     }
 
     .filter-drawer-header h3 {
-        font-size: 17px;
+        font-size: 16px;
         color: #0f172a;
         margin: 0;
     }
@@ -316,11 +319,23 @@ html {
     }
 
     .filter-drawer-body {
-        padding: 15px;
+        padding: 8px 12px;
+        overflow-y: auto;
+        flex: 1;
     }
 
     .desktop-cat-title {
         display: none;
+    }
+
+    /* Kategori liste elemanları mobilde daha sıkıştırılmış ve tek ekrana sığacak boyutta */
+    .filter-category-list {
+        gap: 3px !important;
+    }
+
+    .filter-category-list li a {
+        padding: 7px 10px !important;
+        font-size: 12.5px !important;
     }
 
     .filter-overlay {
@@ -341,7 +356,6 @@ html {
         opacity: 1;
     }
 
-    /* GALAXY S22 VB. DAR EKRANLAR İÇİN KUSURSUZ ARAÇ ÇUBUĞU (KISA FİLTRELE BUTONU) */
     .products-toolbar {
         top: 60px;
         padding: 8px 10px;
@@ -385,7 +399,7 @@ html {
         font-size: 12px;
         cursor: pointer;
         white-space: nowrap;
-        flex: 0 0 auto; /* Butonun içeriği kadar yer kaplamasını sağlar (yatayda kısaltır) */
+        flex: 0 0 auto;
         min-width: 0;
     }
 

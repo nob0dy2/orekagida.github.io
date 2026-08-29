@@ -239,6 +239,11 @@ function removeFromCart(index) {
     localStorage.setItem('orekaCart', JSON.stringify(cart));
     loadCartPageData();
     updateNavBadge();
+
+    // Sepette hiç ürün kalmadıysa sayfanın en üste kaymasını sağla
+    if (cart.length === 0) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }
 
 function updateNavBadge() {

@@ -72,13 +72,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let cart = JSON.parse(localStorage.getItem('orekaCart')) || [];
             
-            // HTML Formatında Şık Ürün Listesi
-            let cartDetailsHtml = cart.map((item, index) => 
-                `<div style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">
-                    <strong style="color: #0f172a;">${index + 1}. ${item.name}</strong> 
-                    <span style="color: #ea580c; font-weight: bold; float: right;">${item.quantity || 1} Adet</span>
-                </div>`
-            ).join('');
+            // HTML Formatında Şık Ürün Listesi ve Tam URL Görseli
+            let cartDetailsHtml = cart.map((item, index) => {
+                let imageUrl = item.image;
+                if (imageUrl && !imageUrl.startsWith('http')) {
+                    imageUrl = `https://raw.githubusercontent.com/nob0dy2/orekagida.github.io/refs/heads/main/${imageUrl}`;
+                } else if (!imageUrl) {
+                    imageUrl = `https://raw.githubusercontent.com/nob0dy2/orekagida.github.io/refs/heads/main/orekalogo.png`;
+                }
+
+                return `<table width="100%" cellspacing="0" cellpadding="0" style="padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
+                    <tr>
+                        <td width="50" style="vertical-align: middle; padding-right: 12px;">
+                            <img src="${imageUrl}" alt="${item.name}" width="45" height="45" style="display: block; width: 45px; height: 45px; object-fit: contain; border-radius: 6px; border: 1px solid #e2e8f0; background-color: #f8fafc;" />
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <strong style="color: #0f172a; font-size: 14px; display: block; margin-bottom: 2px;">${index + 1}. ${item.name}</strong>
+                            <span style="color: #64748b; font-size: 12px; text-transform: uppercase;">Kategori: ${item.category || 'Gıda'}</span>
+                        </td>
+                        <td align="right" style="vertical-align: middle; white-space: nowrap; padding-left: 10px;">
+                            <span style="color: #ea580c; font-weight: bold; font-size: 14px;">${item.quantity || 1} Adet</span>
+                        </td>
+                    </tr>
+                </table>`;
+            }).join('');
 
             const submitBtn = finalQuoteForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;

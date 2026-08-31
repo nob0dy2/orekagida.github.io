@@ -2,12 +2,12 @@
 
 const urunler = [
     // --- PEYNİR ÇEŞİTLERİ ---
-    { kategori: "peynir", gorsel: "img/peynir/a-r-mus-eski-kasar-kg.webp", isim: "A.r.muş Eski Kaşar Kg" },
-    { kategori: "peynir", gorsel: "img/peynir/a-r-z-tulum-peyniri-kg.webp", isim: "A.r Z Tulum Peyniri Kg" },
-    { kategori: "peynir", gorsel: "img/peynir/a-r-z-tulum-peyniri-vakumlu-kg.webp", isim: "A.r Z Tulum Peyniri (Vakumlu) Kg" },
-    { kategori: "peynir", gorsel: "img/peynir/ak-du-otlu-peynir-250-gr-18.webp", isim: "Ak-du Otlu Peynir 250 Gr * 18" },
-    { kategori: "peynir", gorsel: "img/peynir/ak-du-tulum-peyniri-izmir-inek-300-gr-12.webp", isim: "Ak-du Tulum Peyniri İzmir (İnek) 300 Gr * 12" },
-    { kategori: "peynir", gorsel: "img/peynir/ak-du-tulum-peyniri-izmir-koyun-kg.webp", isim: "Ak-du Tulum Peyniri İzmir (Koyun) Kg" },
+    { kategori: "peynir", gorsel: "img/peynir/a-r-mus-eski-kasar-kg.webp", isim: "A.R.Muş Eski Kaşar Kg" },
+    { kategori: "peynir", gorsel: "img/peynir/a-r-z-tulum-peyniri-kg.webp", isim: "A.R.Z Tulum Peyniri Kg" },
+    { kategori: "peynir", gorsel: "img/peynir/a-r-z-tulum-peyniri-vakumlu-kg.webp", isim: "A.R.Z Tulum Peyniri (Vakumlu) Kg" },
+    { kategori: "peynir", gorsel: "img/peynir/ak-du-otlu-peynir-250-gr-18.webp", isim: "AK-DU Otlu Peynir 250 Gr * 18" },
+    { kategori: "peynir", gorsel: "img/peynir/ak-du-tulum-peyniri-izmir-inek-300-gr-12.webp", isim: "AK-DU Tulum Peyniri İzmir (İnek) 300 Gr * 12" },
+    { kategori: "peynir", gorsel: "img/peynir/ak-du-tulum-peyniri-izmir-koyun-kg.webp", isim: "AK-DU Tulum Peyniri İzmir (Koyun) Kg" },
     { kategori: "peynir", gorsel: "img/peynir/aksa-beyaz-peynir-klasik-inek-gold-18-kg.webp", isim: "Aksa Beyaz Peynir Klasik İnek Gold 18 Kg" },
     { kategori: "peynir", gorsel: "img/peynir/aksa-cecil-peynir-2000-gr-4.webp", isim: "Aksa Çeçil Peynir 2000 Gr * 4" },
     { kategori: "peynir", gorsel: "img/peynir/aksa-dil-peynir-1000-gr-8.webp", isim: "Aksa Dil Peynir 1000 Gr * 8" },
@@ -151,7 +151,7 @@ const urunler = [
     { kategori: "kasar", gorsel: "img/kasar/teksut-taze-kasar-peyniri-600-gr-12.webp", isim: "Teksüt Taze Kaşar Peyniri 600 Gr * 12" },
     { kategori: "kasar", gorsel: "img/kasar/torku-taze-kasar-dilimli-350-gr-12.webp", isim: "Torku Taze Kaşar Dilimli 350 Gr * 12" },
     { kategori: "kasar", gorsel: "img/kasar/torku-taze-kasar-peynir-tost-600-gr-12.webp", isim: "Torku Taze Kaşar Peynir Tost 600 Gr * 12" },
-    { kategori: "kasar", gorsel: "img/kasar/trakya-eski-kasar-peynir-m-d-inek-kg.webp", isim: "Trakya Eski Kaşar Peynir M D İnek Kg" },
+    { kategori: "kasar", gorsel: "img/kasar/trakya-eski-kasar-peynir-m-d-inek-kg.webp", isim: "Trakya Eski Kaşar Peynir M.D İnek Kg" },
     { kategori: "kasar", gorsel: "img/kasar/turkova-taze-ksar-peynir-dilimli-1500-gr-8.webp", isim: "Türkova Taze Kaşar Peynir Dilimli 1500 Gr * 8" },
     { kategori: "kasar", gorsel: "img/kasar/unal-eski-kasar-anadolu-250-gr-12.webp", isim: "Ünal Eski Kaşar Anadolu 250 Gr * 12" },
     { kategori: "kasar", gorsel: "img/kasar/unal-taze-kasar-peynir-700-gr-12.webp", isim: "Ünal Taze Kaşar Peynir 700 Gr * 12" },

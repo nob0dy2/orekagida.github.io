@@ -257,7 +257,6 @@ const urunler = [
     { kategori: "et", gorsel: "img/jambon/besler-kavurma-dana-blok-kg.webp", isim: "Beşler Kavurma Dana Blok Kg" },
     { kategori: "et", gorsel: "img/jambon/besler-salam-dana-fistikli-1250-gr-6.webp", isim: "Beşler Salam Dana Fıstıklı 1250 Gr * 6" },
     { kategori: "et", gorsel: "img/jambon/besler-sosis-dana-kokteyl-220-gr-12.webp", isim: "Beşler Sosis Dana Kokteyl 220 Gr * 12" },
-    { kategori: "et", gorsel: "img/jambon/besler-sosis-dana-kokteyl-220-gr-12-kg.webp", isim: "Beşler Sosis Dana Kokteyl 220 Gr * 12 Kg" },
     { kategori: "et", gorsel: "img/jambon/besler-sosis-pilic-kokteyl-eko-700-gr-12.webp", isim: "Beşler Sosis Piliç Kokteyl Eko 700 Gr * 12" },
     { kategori: "et", gorsel: "img/jambon/besler-sucuk-catal-kg.webp", isim: "Beşler Sucuk Çatal Kg" },
     { kategori: "et", gorsel: "img/jambon/besler-sucuk-dana-diiimli-500-gr-9.webp", isim: "Beşler Sucuk Dana Diiimli 500 Gr * 9" },

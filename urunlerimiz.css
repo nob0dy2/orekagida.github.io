@@ -336,6 +336,14 @@ html {
         padding: 8px 12px;
         overflow-y: auto;
         flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filter-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     .desktop-cat-title {
@@ -344,6 +352,8 @@ html {
 
     .filter-category-list {
         gap: 3px !important;
+        flex: 1;
+        justify-content: space-between;
     }
 
     .filter-category-list li a {
@@ -416,6 +426,8 @@ html {
         white-space: nowrap;
         flex: 0 0 auto;
         min-width: 0;
+        height: 36px;
+        box-sizing: border-box;
     }
 
     .search-box {
@@ -424,10 +436,12 @@ html {
         background-color: #f8fafc;
         border: 1px solid #cbd5e1;
         border-radius: 6px;
-        padding: 6px 10px;
+        padding: 6px 8px;
         gap: 6px;
         flex: 1.5;
         min-width: 0;
+        height: 36px;
+        box-sizing: border-box;
     }
 
     .search-box svg {
@@ -460,6 +474,8 @@ html {
         flex: 0 0 auto;
         min-width: 0;
         text-align: center;
+        height: 36px;
+        box-sizing: border-box;
     }
 
     .products-grid {

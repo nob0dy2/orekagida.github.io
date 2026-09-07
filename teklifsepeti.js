@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // YOUR_SERVICE_ID ve YOUR_TEMPLATE_ID değerlerini kendi EmailJS panelinizdekilerle değiştirin
-            emailjs.send('service_9wxz67u', 'template_2yfv2pn', templateParams)
+            emailjs.send('service_jnv7lce', 'template_7fpgvrb', templateParams)
                 .then(function(response) {
                     alert(`Sayın ${fullName}, teklif talebiniz başarıyla bize iletildi.`);
                     localStorage.removeItem('orekaCart');

@@ -1,2 +1,2 @@
-# orekagida.github.io
-https://nob0dy2.github.io/orekagida.github.io/
+# oreka gıda
+https://orekagida.com/index.html

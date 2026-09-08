@@ -2,9 +2,9 @@
 
 const urunler = [
     // --- PEYNİR ÇEŞİTLERİ ---
-    { kategori: "peynir", gorsel: "img/peynir/a-r-mus-eski-kasar-kg.webp", isim: "A.R.Muş Eski Kaşar Kg" },
-    { kategori: "peynir", gorsel: "img/peynir/a-r-z-tulum-peyniri-kg.webp", isim: "A.R.Z Tulum Peyniri Kg" },
-    { kategori: "peynir", gorsel: "img/peynir/a-r-z-tulum-peyniri-vakumlu-kg.webp", isim: "A.R.Z Tulum Peyniri (Vakumlu) Kg" },
+    { kategori: "peynir", gorsel: "img/peynir/a-r-2-mus-eski-kasar-kg.webp", isim: "A.R.2 Muş Eski Kaşar Kg" },
+    { kategori: "peynir", gorsel: "img/peynir/a-r-2-tulum-peyniri-kg.webp", isim: "A.R.2 Tulum Peyniri Kg" },
+    { kategori: "peynir", gorsel: "img/peynir/a-r-2-tulum-peyniri-vakumlu-kg.webp", isim: "A.R.2 Tulum Peyniri (Vakumlu) Kg" },
     { kategori: "peynir", gorsel: "img/peynir/ak-du-otlu-peynir-250-gr-18.webp", isim: "AK-DU Otlu Peynir 250 Gr * 18" },
     { kategori: "peynir", gorsel: "img/peynir/ak-du-tulum-peyniri-izmir-inek-300-gr-12.webp", isim: "AK-DU Tulum Peyniri İzmir (İnek) 300 Gr * 12" },
     { kategori: "peynir", gorsel: "img/peynir/ak-du-tulum-peyniri-izmir-koyun-kg.webp", isim: "AK-DU Tulum Peyniri İzmir (Koyun) Kg" },
@@ -159,28 +159,28 @@ const urunler = [
     { kategori: "kasar", gorsel: "img/kasar/vahdet-taze-kasar-peynir-1000-gr-12.webp", isim: "Vahdet Taze Kaşar Peynir 1000 Gr * 12" },
 
     // --- ZEYTİN ÇEŞİTLERİ ---
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Bademli Yeşil Zeytin 10 kg 110-120 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Biberli Yeşil Zeytin 10 kg 180-200 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Biberli Yeşil Zeytin 10 kg 200-230 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Çizik Yeşil Zeytin 10 kg 201-230 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Çizik Yeşil Zeytin 10 kg 230-260 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Çizik Yeşil Zeytin 10 kg 260-290 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Dilimli Siyah Zeytin 8 kg" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Dilimli Yeşil Zeytin 8 kg" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Domat Kırma Yeşil Zeytin 10 kg 160-180 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Girit Çizik (Alyanak) Yeşil Zeytin 10 kg 200-230 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Hal-Hal Yeşil Zeytin 10 kg" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Hatay Kırma Yeşil Zeytin 10 kg 201-230 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Izgara Yeşil Zeytin 9 kg 160-180 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Izgara Yeşil Zeytin 9 kg 180-200 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Izgara Yeşil Zeytin 9 kg 200-230 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Kuru Sele Siyah Zeytin 9 kg 260-290 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 kg 201-230 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 kg 230-260 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 kg 260-290 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 kg 290-320 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 kg 320-350 Kalibre" },
-    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 kg 350-380 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Bademli Yeşil Zeytin 10 Kg 110-120 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Biberli Yeşil Zeytin 10 Kg 180-200 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Biberli Yeşil Zeytin 10 Kg 200-230 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Çizik Yeşil Zeytin 10 Kg 201-230 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Çizik Yeşil Zeytin 10 Kg 230-260 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Çizik Yeşil Zeytin 10 Kg 260-290 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Dilimli Siyah Zeytin 8 Kg" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Dilimli Yeşil Zeytin 8 Kg" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Domat Kırma Yeşil Zeytin 10 Kg 160-180 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Girit Çizik (Alyanak) Yeşil Zeytin 10 Kg 200-230 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Hal-Hal Yeşil Zeytin 10 Kg" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Hatay Kırma Yeşil Zeytin 10 Kg 201-230 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Izgara Yeşil Zeytin 9 Kg 160-180 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Izgara Yeşil Zeytin 9 Kg 180-200 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Izgara Yeşil Zeytin 9 Kg 200-230 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Kuru Sele Siyah Zeytin 9 Kg 260-290 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 Kg 201-230 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 Kg 230-260 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 Kg 260-290 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 Kg 290-320 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 Kg 320-350 Kalibre" },
+    { kategori: "zeytin", gorsel: "img/zeytin/akbek.webp", isim: "Akbek Yağlı Sele Siyah Zeytin 10 Kg 350-380 Kalibre" },
     { kategori: "zeytin", gorsel: "img/zeytin/akdeniz-salatasi-izgara-zeytin-kova-3-kg-4.webp", isim: "Akdeniz Salatası Izgara Zeytin Kova 3 Kg * 4" },
     { kategori: "zeytin", gorsel: "img/zeytin/aksa-siyah-zeytin-201-230-beyaz-tnk-10-kg.webp", isim: "Aksa Siyah Zeytin 201-230 Beyaz Tnk 10 Kg" },
     { kategori: "zeytin", gorsel: "img/zeytin/aksa-siyah-zeytin-230-260-siyah-tnk-10-kg.webp", isim: "Aksa Siyah Zeytin 230-260 Siyah Tnk 10 Kg" },
@@ -619,6 +619,9 @@ function setupFilters() {
             if(categoryTitle) categoryTitle.innerText = e.target.innerText;
             
             filterData();
+
+            // Sayfayı anında ve en hızlı şekilde en üste taşır
+            window.scrollTo(0, 0);
 
             // Mobilde kategori seçildiğinde filtre menüsünü ve karartmayı otomatik kapat
             if (window.innerWidth <= 991) {

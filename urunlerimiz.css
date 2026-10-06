@@ -54,6 +54,7 @@ html {
     font-weight: 800;
 }
 
+/* --- KATEGORİ LİSTESİ MOUSE İLE KAYDIRMA (DRAG-TO-SCROLL) VE RESPONSIVE --- */
 .filter-category-list {
     list-style: none;
     display: flex;
@@ -62,6 +63,23 @@ html {
     padding: 0;
     margin: 0;
     width: 100%;
+    
+    /* Mouse ile sürükleme ve akıcı kaydırma için eklemeler */
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox için scrollbar gizleme */
+}
+
+.filter-category-list:active {
+    cursor: grabbing;
+}
+
+.filter-category-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari ve Opera için scrollbar gizleme */
 }
 
 .filter-category-list li a {

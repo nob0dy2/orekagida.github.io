@@ -627,4 +627,37 @@ function setupFilters() {
             }
         });
     });
+
+    // --- MOUSE İLE KAYDIRMA (DRAG-TO-SCROLL) MANTIĞI ---
+    const categoryListContainer = document.querySelector('.filter-category-list');
+    if (categoryListContainer) {
+        let isDown = false;
+        let startY;
+        let scrollTop;
+
+        categoryListContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            categoryListContainer.classList.add('active');
+            startY = e.pageY - categoryListContainer.offsetTop;
+            scrollTop = categoryListContainer.scrollTop;
+        });
+
+        categoryListContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            categoryListContainer.classList.remove('active');
+        });
+
+        categoryListContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            categoryListContainer.classList.remove('active');
+        });
+
+        categoryListContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const y = e.pageY - categoryListContainer.offsetTop;
+            const walk = (y - startY) * 1.5; // Kaydırma hızı çarpanı
+            categoryListContainer.scrollTop = scrollTop - walk;
+        });
+    }
 }

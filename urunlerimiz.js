@@ -304,23 +304,24 @@ const urunler = [
     { kategori: "et", gorsel: "img/jambon/sahin-salam-dana-macar-900-gr-12.webp", isim: "Şahin Salam Dana Macar 900 Gr * 12" },
     { kategori: "et", gorsel: "img/jambon/sahin-salam-ispanyol-2-kg-6.webp", isim: "Şahin Salam İspanyol 2 Kg * 6" },
 
-    // --- PİKNİK GRUBU ---
-    { kategori: "piknik", gorsel: "img/piknik/calve-ranch-sos-245-gr-12.webp", isim: "Calve Ranch Sos 245 Gr * 12" },
-    { kategori: "piknik", gorsel: "img/piknik/heinz-barbeku-sos-bbq-hp-klasik-465-gr-8.webp", isim: "Heinz Barbekü Sos Bbq Hp Klasik 465 Gr * 8" },
-    { kategori: "piknik", gorsel: "img/piknik/heinz-hardal-mild-445-gr-10.webp", isim: "Heinz Hardal Mild 445 Gr * 10" },
-    { kategori: "piknik", gorsel: "img/piknik/heinz-ketcap-acili-460-gr-10.webp", isim: "Heinz Ketçap Acılı 460 Gr * 10" },
-    { kategori: "piknik", gorsel: "img/piknik/heinz-ketcap-tatli-460-gr-10.webp", isim: "Heinz Ketçap Tatlı 460 Gr * 10" },
-    { kategori: "piknik", gorsel: "img/piknik/heinz-mayonez-400-gr-12.webp", isim: "Heinz Mayonez 400 Gr * 12" },
-    { kategori: "piknik", gorsel: "img/piknik/heinz-sos-aci-biberli-hot-chilli-245-gr-8.webp", isim: "Heinz Sos Acı Biberli (Hot Chilli) 245 Gr * 8" },
+    // --- SOS ÇEŞİTLERİ (YENİ KATEGORİ) ---
+    { kategori: "sos", gorsel: "img/piknik/calve-ranch-sos-245-gr-12.webp", isim: "Calve Ranch Sos 245 Gr * 12" },
+    { kategori: "sos", gorsel: "img/piknik/heinz-barbeku-sos-bbq-hp-klasik-465-gr-8.webp", isim: "Heinz Barbekü Sos Bbq Hp Klasik 465 Gr * 8" },
+    { kategori: "sos", gorsel: "img/piknik/heinz-hardal-mild-445-gr-10.webp", isim: "Heinz Hardal Mild 445 Gr * 10" },
+    { kategori: "sos", gorsel: "img/piknik/heinz-ketcap-acili-460-gr-10.webp", isim: "Heinz Ketçap Acılı 460 Gr * 10" },
+    { kategori: "sos", gorsel: "img/piknik/heinz-ketcap-tatli-460-gr-10.webp", isim: "Heinz Ketçap Tatlı 460 Gr * 10" },
+    { kategori: "sos", gorsel: "img/piknik/heinz-mayonez-400-gr-12.webp", isim: "Heinz Mayonez 400 Gr * 12" },
+    { kategori: "sos", gorsel: "img/piknik/heinz-sos-aci-biberli-hot-chilli-245-gr-8.webp", isim: "Heinz Sos Acı Biberli (Hot Chilli) 245 Gr * 8" },
+    { kategori: "sos", gorsel: "img/piknik/tukas-ketcap-kova-9-kg.webp", isim: "Tukaş Ketçap Kova 9 Kg" },
+    { kategori: "sos", gorsel: "img/piknik/tukas-mayonez-kova-8-kg.webp", isim: "Tukaş Mayonez Kova 8 Kg" },
+
+    // --- PİKNİK GRUBU (Karperler ve soslar temizlendi) ---
     { kategori: "piknik", gorsel: "img/piknik/icim-bal-piknik-20-gr-96.webp", isim: "İçim Bal Piknik 20 Gr * 96" },
     { kategori: "piknik", gorsel: "img/piknik/icim-labne-peynir-piknik-20-gr-128.webp", isim: "İçim Labne Peynir Piknik 20 Gr * 128" },
     { kategori: "piknik", gorsel: "img/piknik/icim-recel-cilek-piknik-20-gr-96.webp", isim: "İçim Reçel Çilek Piknik 20 Gr * 96" },
     { kategori: "piknik", gorsel: "img/piknik/icim-recel-visne-piknik-20-gr-96.webp", isim: "İçim Reçel Vişne Piknik 20 Gr * 96" },
     { kategori: "piknik", gorsel: "img/piknik/icim-taze-peynir-piknik-20-gr-128.webp", isim: "İçim Taze Peynir Piknik 20 Gr * 128" },
     { kategori: "piknik", gorsel: "img/piknik/icim-tereyagi-piknik-20-gr-128.webp", isim: "İçim Tereyağı Piknik 20 Gr * 128" },
-    { kategori: "piknik", gorsel: "img/piknik/karper-peynir-16li-ekonomik-200-gr-12.webp", isim: "Karper Peynir 16'lı Ekonomik 200 Gr * 12" },
-    { kategori: "piknik", gorsel: "img/piknik/karper-peynir-18li-multipack-12.webp", isim: "Karper Peynir 18'li Multipack * 12" },
-    { kategori: "piknik", gorsel: "img/piknik/karper-peynir-8li-100-gr-24.webp", isim: "Karper Peynir 8'li 100 Gr * 24" },
     { kategori: "piknik", gorsel: "img/piknik/koska-helva-sade-piknik-20-gr-25.webp", isim: "Koska Helva Sade Piknik 20 Gr * 25" },
     { kategori: "piknik", gorsel: "img/piknik/koska-piknik-cam-bali-20-gr-100.webp", isim: "Koska Piknik Çam Balı 20 Gr * 100" },
     { kategori: "piknik", gorsel: "img/piknik/koska-piknik-cikos-cokokrem-15-gr-100.webp", isim: "Koska Piknik Çikos Çokokrem 15 Gr * 100" },
@@ -348,8 +349,6 @@ const urunler = [
     { kategori: "piknik", gorsel: "img/piknik/sutas-tereyagi-piknik-15-gr-48.webp", isim: "Sütaş Tereyağı Piknik 15 Gr * 48" },
     { kategori: "piknik", gorsel: "img/piknik/teksut-krem-peynir-piknik.webp", isim: "Teksüt Krem Peynir Piknik" },
     { kategori: "piknik", gorsel: "img/piknik/teksut-piknik-tereyagi-10-gr-100.webp", isim: "Teksüt Piknik Tereyağı 10 Gr * 100" },
-    { kategori: "piknik", gorsel: "img/piknik/tukas-ketcap-kova-9-kg.webp", isim: "Tukaş Ketçap Kova 9 Kg" },
-    { kategori: "piknik", gorsel: "img/piknik/tukas-mayonez-kova-8-kg.webp", isim: "Tukaş Mayonez Kova 8 Kg" },
 
     // --- YOĞURT GRUBU ---
     { kategori: "yogurt", gorsel: "img/yogurt/gursut-yogurt-suzme-10-kg.webp", isim: "Gürsüt Yoğurt Süzme 10 Kg" },
@@ -620,10 +619,8 @@ function setupFilters() {
             
             filterData();
 
-            // Sayfayı anında ve en hızlı şekilde en üste taşır
             window.scrollTo(0, 0);
 
-            // Mobilde kategori seçildiğinde filtre menüsünü ve karartmayı otomatik kapat
             if (window.innerWidth <= 991) {
                 if (filterDrawer) filterDrawer.classList.remove('open');
                 if (filterOverlay) filterOverlay.classList.remove('active');

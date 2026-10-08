@@ -484,8 +484,8 @@ body {
     border-top: 1px solid rgba(255,255,255,0.1); 
 }
 
-/* Mobil Uyumluluk ve Tam Ekran Menü */
-@media (max-width: 768px) {
+/* Mobil ve Tablet Uyumluluğu (1024px ve altı) - Saydam Buz Efekti Eklendi */
+@media (max-width: 1024px) {
     .hero {
         height: 100dvh; 
         min-height: auto;
@@ -497,7 +497,10 @@ body {
         left: -100%; 
         width: 100vw; 
         height: 100vh; 
-        background-color: #ffffff; 
+        /* Şeffaf buz efekti (Arka planı gösteren yarı şeffaf beyaz + bulanıklık) */
+        background-color: rgba(255, 255, 255, 0.75); 
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px); /* Safari desteği */
         flex-direction: column; 
         justify-content: center; 
         align-items: center; 
@@ -532,7 +535,7 @@ body {
     }
 
     .slide-content h1 { 
-        font-size: 24px; 
+        font-size: 28px; 
     }
 
     .hero-buttons {
